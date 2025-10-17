@@ -141,50 +141,50 @@
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="100"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="184"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="184"/>
         <location filename="../../src/widgets/capturelauncher.cpp" line="53"/>
         <source> seconds</source>
         <translation> 초</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="165"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="185"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="185"/>
         <source>Take new screenshot</source>
         <translation>새 스크린샷 찍기</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="66"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="180"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="180"/>
         <source>Area:</source>
         <translation>영역:</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="14"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="177"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="177"/>
         <source>Capture Launcher</source>
         <translation>캡처 런처</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="34"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="178"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="178"/>
         <source>TextLabel</source>
         <translation>텍스트 레이블</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="51"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="179"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="179"/>
         <source>Capture Mode</source>
         <translation>캡처 모드</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="80"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="182"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="182"/>
         <source>Delay:</source>
         <translation>지연:</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="93"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="183"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="183"/>
         <source>WxH+x+y</source>
         <translation>WxH+x+y</translation>
     </message>
@@ -258,13 +258,13 @@
     </message>
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="727"/>
-        <source>Flameshot has lost focus. Keyboard shortcuts won&apos;t work until you click somewhere.</source>
-        <translation>Flameshot은 초점을 잃었습니다. 키보드 단축키는 어딘가를 클릭하기 전까지는 작동하지 않습니다.</translation>
+        <source>Shotup has lost focus. Keyboard shortcuts won&apos;t work until you click somewhere.</source>
+        <translation>Shotup은 초점을 잃었습니다. 키보드 단축키는 어딘가를 클릭하기 전까지는 작동하지 않습니다.</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="733"/>
-        <source>Configuration error resolved. Launch `flameshot gui` again to apply it.</source>
-        <translation>구성 오류가 해결되었습니다. &apos;flameshot gui&apos;를 다시 실행하여 적용합니다.</translation>
+        <source>Configuration error resolved. Launch `shotup gui` again to apply it.</source>
+        <translation>구성 오류가 해결되었습니다. &apos;shotup gui&apos;를 다시 실행하여 적용합니다.</translation>
     </message>
     <message>
         <source>Select an area with the mouse, or press Esc to exit.
@@ -568,10 +568,10 @@ Space로 사이드 패널을 엽니다.</translation>
     <message>
         <location filename="../../src/config/configresolver.cpp" line="90"/>
         <source>Some keyboard shortcuts have conflicts.
-This will NOT prevent flameshot from starting.
+This will NOT prevent shotup from starting.
 Please solve them manually in the configuration file.</source>
         <translation>일부 키보드 단축키에는 충돌이 있습니다.
-이것은 flameshot이 시작되는 것을 막지 못할 것입니다.
+이것은 shotup이 시작되는 것을 막지 못할 것입니다.
 구성 파일에서 수동으로 해결해 주세요.</translation>
     </message>
     <message>
@@ -777,42 +777,42 @@ Please solve them manually in the configuration file.</source>
     </message>
 </context>
 <context>
-    <name>Flameshot</name>
+    <name>Shotup</name>
     <message>
-        <location filename="../../src/core/flameshot.cpp" line="119"/>
+        <location filename="../../src/core/shotup.cpp" line="119"/>
         <source>Error</source>
         <translation>오류</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshot.cpp" line="119"/>
+        <location filename="../../src/core/shotup.cpp" line="119"/>
         <source>Unable to close active modal widgets</source>
         <translation>활성 모드 위젯을 닫을 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshot.cpp" line="431"/>
+        <location filename="../../src/core/shotup.cpp" line="431"/>
         <source>URL copied to clipboard.</source>
         <translation>URL이 클립보드에 복사되었습니다.</translation>
     </message>
 </context>
 <context>
-    <name>FlameshotDaemon</name>
+    <name>ShotupDaemon</name>
     <message>
-        <location filename="../../src/core/flameshotdaemon.cpp" line="407"/>
+        <location filename="../../src/core/shotupdaemon.cpp" line="407"/>
         <source>New version %1 is available</source>
         <translation>새 버전 %1 사용 가능</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshotdaemon.cpp" line="413"/>
+        <location filename="../../src/core/shotupdaemon.cpp" line="413"/>
         <source>You have the latest version</source>
         <translation>최신 버전이 있습니다</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshotdaemon.cpp" line="422"/>
+        <location filename="../../src/core/shotupdaemon.cpp" line="422"/>
         <source>Failed to get information about the latest version.</source>
         <translation>최신 버전에 대한 정보를 얻지 못했습니다.</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshotdaemon.cpp" line="445"/>
+        <location filename="../../src/core/shotupdaemon.cpp" line="445"/>
         <source>Unable to connect via DBus</source>
         <translation>DBus를 통해 연결할 수 없습니다</translation>
     </message>
@@ -885,8 +885,8 @@ Please solve them manually in the configuration file.</source>
         <translation type="vanished">컴퓨터를 시작할 때 실행</translation>
     </message>
     <message>
-        <source>Launch Flameshot</source>
-        <translation type="vanished">Flameshot을 실행</translation>
+        <source>Launch Shotup</source>
+        <translation type="vanished">Shotup을 실행</translation>
     </message>
     <message>
         <source>Close after capture</source>
@@ -1006,8 +1006,8 @@ Please solve them manually in the configuration file.</source>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="426"/>
-        <source>Allow multiple flameshot GUI instances simultaneously</source>
-        <translation>여러 개의 flameshot GUI 인스턴스 동시 허용</translation>
+        <source>Allow multiple shotup GUI instances simultaneously</source>
+        <translation>여러 개의 shotup GUI 인스턴스 동시 허용</translation>
     </message>
     <message>
         <source>Automatically close daemon when it is not needed</source>
@@ -1018,8 +1018,8 @@ Please solve them manually in the configuration file.</source>
         <translation type="obsolete">컴퓨터를 시작할 때 실행</translation>
     </message>
     <message>
-        <source>Launch Flameshot</source>
-        <translation type="obsolete">Flameshot을 실행</translation>
+        <source>Launch Shotup</source>
+        <translation type="obsolete">Shotup을 실행</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="463"/>
@@ -1111,12 +1111,12 @@ Please solve them manually in the configuration file.</source>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="427"/>
-        <source>This allows you to take screenshots of Flameshot itself for example</source>
-        <translation>이를 통해 예를 들어 Flameshot 자체의 스크린샷을 찍을 수 있습니다</translation>
+        <source>This allows you to take screenshots of Shotup itself for example</source>
+        <translation>이를 통해 예를 들어 Shotup 자체의 스크린샷을 찍을 수 있습니다</translation>
     </message>
     <message>
-        <source>Launch Flameshot daemon when computer is booted</source>
-        <translation type="vanished">Launch Flameshot daemon when computer is booted</translation>
+        <source>Launch Shotup daemon when computer is booted</source>
+        <translation type="vanished">Launch Shotup daemon when computer is booted</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="466"/>
@@ -1158,8 +1158,8 @@ Please solve them manually in the configuration file.</source>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="452"/>
-        <source>Launch Flameshot daemon (background process) when computer is booted</source>
-        <translation>컴퓨터가 부팅될 때 Flameshot 데몬 (배경 프로세스) 실행</translation>
+        <source>Launch Shotup daemon (background process) when computer is booted</source>
+        <translation>컴퓨터가 부팅될 때 Shotup 데몬 (배경 프로세스) 실행</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="477"/>
@@ -1591,49 +1591,49 @@ Please solve them manually in the configuration file.</source>
     <name>InfoWindow</name>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="14"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="116"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="116"/>
         <source>About</source>
         <translation>이 어플리케이션에 대하여</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="26"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="117"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="117"/>
         <source>Icon</source>
         <translation>Icon</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="43"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="118"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="118"/>
         <source>License</source>
         <translation>라이선스</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="56"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="119"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="119"/>
         <source>GPLv3+</source>
         <translation>GPLv3+</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="89"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="120"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="120"/>
         <source>Version</source>
         <translation>Version</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="102"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="121"/>
-        <source>Flameshot v</source>
-        <translation>Flameshot v</translation>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="121"/>
+        <source>Shotup v</source>
+        <translation>Shotup v</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="115"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="122"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="122"/>
         <source>OS Info</source>
         <translation>OS Info</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="128"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="123"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="123"/>
         <source>Copy Info</source>
         <translation>복사 정보</translation>
     </message>
@@ -2150,12 +2150,12 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
         <translation>작성할 수 없습니다:</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshot.cpp" line="156"/>
+        <location filename="../../src/core/shotup.cpp" line="156"/>
         <source>Requested screen exceeds screen count</source>
         <translation>요청된 화면이 화면 수를 초과합니다</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshot.cpp" line="408"/>
+        <location filename="../../src/core/shotup.cpp" line="408"/>
         <source>Full screen screenshot pinned to screen</source>
         <translation>화면에 고정된 전체 화면 스크린샷</translation>
     </message>
@@ -2198,8 +2198,8 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     </message>
     <message>
         <location filename="../../src/cli/commandlineparser.cpp" line="334"/>
-        <source>Per default runs Flameshot in the background and adds a tray icon for configuration.</source>
-        <translation>기본적으로 Flameshot을 백그라운드에서 실행하고 설정을 위한 트레이 아이콘을 추가합니다.</translation>
+        <source>Per default runs Shotup in the background and adds a tray icon for configuration.</source>
+        <translation>기본적으로 Shotup을 백그라운드에서 실행하고 설정을 위한 트레이 아이콘을 추가합니다.</translation>
     </message>
     <message>
         <source>Toggle side panel</source>
@@ -2340,8 +2340,8 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     </message>
     <message>
         <location filename="../../src/utils/screengrabber.cpp" line="171"/>
-        <source>If the useGrimAdapter setting is not enabled, the dbus protocol will be used. It should be noted that using the dbus protocol under wayland is not recommended. It is recommended to enable the useGrimAdapter setting in flameshot.ini to activate the grim-based general wayland screenshot adapter</source>
-        <translation>useGrimAdapter 설정이 활성화되지 않은 경우 dbus 프로토콜이 사용됩니다. 경유지에서 dbus 프로토콜을 사용하는 것은 권장되지 않습니다. flameshot.ini에서 useGrimAdapter 설정을 활성화하여 그림 기반의 일반 경유지 스크린샷 어댑터를 활성화하는 것이 좋습니다</translation>
+        <source>If the useGrimAdapter setting is not enabled, the dbus protocol will be used. It should be noted that using the dbus protocol under wayland is not recommended. It is recommended to enable the useGrimAdapter setting in shotup.ini to activate the grim-based general wayland screenshot adapter</source>
+        <translation>useGrimAdapter 설정이 활성화되지 않은 경우 dbus 프로토콜이 사용됩니다. 경유지에서 dbus 프로토콜을 사용하는 것은 권장되지 않습니다. shotup.ini에서 useGrimAdapter 설정을 활성화하여 그림 기반의 일반 경유지 스크린샷 어댑터를 활성화하는 것이 좋습니다</translation>
     </message>
     <message>
         <location filename="../../src/utils/screengrabber.cpp" line="182"/>
@@ -2436,8 +2436,8 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     <message>
         <location filename="../../src/config/setshortcutwidget.cpp" line="48"/>
         <location filename="../../src/config/setshortcutwidget.cpp" line="53"/>
-        <source>Flameshot must be restarted for changes to take effect.</source>
-        <translation>변경 사항을 적용하려면 Flameshot을 재시작해야 합니다.</translation>
+        <source>Shotup must be restarted for changes to take effect.</source>
+        <translation>변경 사항을 적용하려면 Shotup을 재시작해야 합니다.</translation>
     </message>
 </context>
 <context>
@@ -2765,8 +2765,8 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     <name>SystemNotification</name>
     <message>
         <location filename="../../src/utils/systemnotification.cpp" line="42"/>
-        <source>Flameshot Info</source>
-        <translation>Flameshot 정보</translation>
+        <source>Shotup Info</source>
+        <translation>Shotup 정보</translation>
     </message>
 </context>
 <context>
@@ -2922,8 +2922,8 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</source>
     <name>UpdateNotificationWidget</name>
     <message>
         <location filename="../../src/widgets/updatenotificationwidget.cpp" line="70"/>
-        <source>New Flameshot version %1 is available</source>
-        <translation>새 Flameshot 버전 %1 사용 가능</translation>
+        <source>New Shotup version %1 is available</source>
+        <translation>새 Shotup 버전 %1 사용 가능</translation>
     </message>
     <message>
         <location filename="../../src/widgets/updatenotificationwidget.cpp" line="123"/>

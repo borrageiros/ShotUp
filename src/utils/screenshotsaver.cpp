@@ -3,8 +3,8 @@
 
 #include "screenshotsaver.h"
 #include "abstractlogger.h"
-#include "src/core/flameshot.h"
-#include "src/core/flameshotdaemon.h"
+#include "src/core/shotup.h"
+#include "src/core/shotupdaemon.h"
 #include "src/utils/confighandler.h"
 #include "src/utils/filenamehandler.h"
 #include "src/utils/globalvalues.h"
@@ -271,7 +271,7 @@ bool saveToFilesystemGUI(const QPixmap& capture)
 #ifdef Q_OS_WIN
             savePath.replace('/', '\\');
 #endif
-            FlameshotDaemon::copyToClipboard(
+            ShotupDaemon::copyToClipboard(
               savePath, QObject::tr("Path copied to clipboard as ") + savePath);
         }
 

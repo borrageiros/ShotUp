@@ -30,14 +30,14 @@ bool verifyLaunchFile()
     QString path = QStandardPaths::locate(QStandardPaths::GenericConfigLocation,
                                           "autostart/",
                                           QStandardPaths::LocateDirectory) +
-                   "Flameshot.desktop";
+                   "Shotup.desktop";
     bool res = QFile(path).exists();
 #elif defined(Q_OS_WIN)
     QSettings bootUpSettings(
       "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
       QSettings::NativeFormat);
     bool res =
-      bootUpSettings.value("Flameshot").toString() ==
+      bootUpSettings.value("Shotup").toString() ==
       QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
 #endif
     return res;
@@ -271,13 +271,13 @@ void ConfigHandler::setStartupLaunch(const bool start)
                         << "-e"
                         << "tell application \"System Events\" to make login "
                            "item at end with properties {name: "
-                           "\"Flameshot\",path:\"/Applications/"
-                           "flameshot.app\", hidden:false}");
+                           "\"Shotup\",path:\"/Applications/"
+                           "shotup.app\", hidden:false}");
     } else {
         process.start("osascript",
                       QStringList() << "-e"
                                     << "tell application \"System Events\" to "
-                                       "delete login item \"Flameshot\"");
+                                       "delete login item \"Shotup\"");
     }
     if (!process.waitForFinished()) {
         qWarning() << "Login items is changed. " << process.errorString();
@@ -294,11 +294,11 @@ void ConfigHandler::setStartupLaunch(const bool start)
         autostartDir.mkpath(".");
     }
 
-    QFile file(path + "Flameshot.desktop");
+    QFile file(path + "Shotup.desktop");
     if (start) {
         if (file.open(QIODevice::WriteOnly)) {
-            QByteArray data("[Desktop Entry]\nName=flameshot\nIcon=flameshot"
-                            "\nExec=flameshot\nTerminal=false\nType=Application"
+            QByteArray data("[Desktop Entry]\nName=shotup\nIcon=shotup"
+                            "\nExec=shotup\nTerminal=false\nType=Application"
                             "\nX-GNOME-Autostart-enabled=true\n");
             file.write(data);
         }
@@ -309,7 +309,7 @@ void ConfigHandler::setStartupLaunch(const bool start)
     QSettings bootUpSettings(
       "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
       QSettings::NativeFormat);
-    // set workdir for flameshot on startup
+    // set workdir for shotup on startup
     QSettings bootUpPath(
       "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App "
       "Paths",
@@ -317,18 +317,18 @@ void ConfigHandler::setStartupLaunch(const bool start)
     if (start) {
         QString app_path =
           QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
-        bootUpSettings.setValue("Flameshot", app_path);
+        bootUpSettings.setValue("Shotup", app_path);
 
         // set application workdir
-        bootUpPath.beginGroup("flameshot.exe");
+        bootUpPath.beginGroup("shotup.exe");
         bootUpPath.setValue("Path", QCoreApplication::applicationDirPath());
         bootUpPath.endGroup();
 
     } else {
-        bootUpSettings.remove("Flameshot");
+        bootUpSettings.remove("Shotup");
 
         // remove application workdir
-        bootUpPath.beginGroup("flameshot.exe");
+        bootUpPath.beginGroup("shotup.exe");
         bootUpPath.remove("");
         bootUpPath.endGroup();
     }
@@ -457,7 +457,7 @@ QString ConfigHandler::shortcut(const QString& actionName)
     QString setting = CONFIG_GROUP_SHORTCUTS "/" + actionName;
     QString shortcut = value(setting).toString();
     if (!m_settings.contains(setting)) {
-        // The action uses a shortcut that is a flameshot default
+        // The action uses a shortcut that is a shotup default
         // (not set explicitly by user)
         m_settings.beginGroup(CONFIG_GROUP_SHORTCUTS);
         for (auto& otherAction : m_settings.allKeys()) {
@@ -600,7 +600,7 @@ bool ConfigHandler::checkUnrecognizedSettings(AbstractLogger* log,
  * @return Whether the config passes this check.
  *
  * @note It is not considered a conflict if action A uses shortcut S because it
- * is the flameshot default (not because the user explicitly configured it), and
+ * is the shotup default (not because the user explicitly configured it), and
  * action B uses the same shortcut.
  */
 bool ConfigHandler::checkShortcutConflicts(AbstractLogger* log) const
@@ -617,7 +617,7 @@ bool ConfigHandler::checkShortcutConflicts(AbstractLogger* log) const
             // The check will pass if:
             // - one shortcut is empty (the action doesn't use a shortcut)
             // - or one of the settings is not found in m_settings, i.e.
-            //   user wants to use flameshot's default shortcut for the action
+            //   user wants to use shotup's default shortcut for the action
             // - or the shortcuts for both actions are different
             if (!(value1.isEmpty() || !m_settings.contains(*key1) ||
                   !m_settings.contains(*key2) || value1 != value2)) {

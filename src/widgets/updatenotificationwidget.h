@@ -2,8 +2,8 @@
 // Created by yuriypuchkov on 09.12.2020.
 //
 
-#ifndef FLAMESHOT_UPDATENOTIFICATIONWIDGET_H
-#define FLAMESHOT_UPDATENOTIFICATIONWIDGET_H
+#ifndef SHOTUP_UPDATENOTIFICATIONWIDGET_H
+#define SHOTUP_UPDATENOTIFICATIONWIDGET_H
 
 #include <QPointer>
 #include <QWidget>
@@ -44,4 +44,4 @@ private:
     QPropertyAnimation* m_hideAnimation;
 };
 
-#endif // FLAMESHOT_UPDATENOTIFICATIONWIDGET_H
+#endif // SHOTUP_UPDATENOTIFICATIONWIDGET_H

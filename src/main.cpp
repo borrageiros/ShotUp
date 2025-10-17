@@ -14,8 +14,8 @@
 #include "src/config/cacheutils.h"
 #include "src/config/styleoverride.h"
 #include "src/core/capturerequest.h"
-#include "src/core/flameshot.h"
-#include "src/core/flameshotdaemon.h"
+#include "src/core/shotup.h"
+#include "src/core/shotupdaemon.h"
 #include "src/utils/confighandler.h"
 #include "src/utils/filenamehandler.h"
 #include "src/utils/pathinfo.h"
@@ -27,7 +27,7 @@
 #include <QTimer>
 #include <QTranslator>
 #if !(defined(Q_OS_MACOS) || defined(Q_OS_WIN))
-#include "src/core/flameshotdbusadapter.h"
+#include "src/core/shotupdbusadapter.h"
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <desktopinfo.h>
@@ -63,22 +63,22 @@ static int setup_unix_signal_handlers()
 
 int requestCaptureAndWait(const CaptureRequest& req)
 {
-    Flameshot* flameshot = Flameshot::instance();
-    flameshot->requestCapture(req);
-    QObject::connect(flameshot, &Flameshot::captureTaken, [&](const QPixmap&) {
+    Shotup* shotup = Shotup::instance();
+    shotup->requestCapture(req);
+    QObject::connect(shotup, &Shotup::captureTaken, [&](const QPixmap&) {
 #if defined(Q_OS_MACOS)
         // Only useful on MacOS because each instance hosts its own widgets
-        if (!FlameshotDaemon::isThisInstanceHostingWidgets()) {
+        if (!ShotupDaemon::isThisInstanceHostingWidgets()) {
             qApp->exit(0);
         }
 #else
         // if this instance is not daemon, make sure it exit after caputre finish
-        if (FlameshotDaemon::instance() == nullptr && !Flameshot::instance()->haveExternalWidget()) {
+        if (ShotupDaemon::instance() == nullptr && !Shotup::instance()->haveExternalWidget()) {
             qApp->exit(E_OK);
         }
 #endif
     });
-    QObject::connect(flameshot, &Flameshot::captureFailed, []() {
+    QObject::connect(shotup, &Shotup::captureFailed, []() {
         AbstractLogger::Target logTarget = static_cast<AbstractLogger::Target>(
           ConfigHandler().showAbortNotification()
             ? AbstractLogger::Target::Default
@@ -92,7 +92,7 @@ int requestCaptureAndWait(const CaptureRequest& req)
 
 QSharedMemory* guiMutexLock()
 {
-    QString key = "org.flameshot.Flameshot-" APP_VERSION;
+    QString key = "org.shotup.Shotup-" APP_VERSION;
     auto* shm = new QSharedMemory(key);
 #ifdef Q_OS_UNIX
     // Destroy shared memory if the last instance crashed on Unix
@@ -133,11 +133,11 @@ void configureTranslation(QTranslator& translator, QTranslator& qtTranslator)
         if (ConfigHandler().uiLanguage() == QStringLiteral("auto")) {
             QLocale l;
             qWarning() << QStringLiteral(
-                            "No Flameshot translation found for %1")
+                            "No Shotup translation found for %1")
                             .arg(l.uiLanguages().join(", "));
         } else {
             qWarning() << QStringLiteral(
-                            "No Flameshot translation found for %1")
+                            "No Shotup translation found for %1")
                             .arg(ConfigHandler().uiLanguage());
         }
     }
@@ -205,10 +205,10 @@ int main(int argc, char* argv[])
     qRegisterMetaType<QList<int>>();
 
     QCoreApplication::setApplicationVersion(APP_VERSION);
-    QCoreApplication::setApplicationName(QStringLiteral("flameshot"));
-    QCoreApplication::setOrganizationName(QStringLiteral("flameshot"));
+    QCoreApplication::setApplicationName(QStringLiteral("shotup"));
+    QCoreApplication::setOrganizationName(QStringLiteral("shotup"));
 
-    // no arguments, just launch Flameshot
+    // no arguments, just launch Shotup
     if (argc == 1) {
         QApplication app(argc, argv);
         configureTranslation(translator, qtTranslator);
@@ -219,7 +219,7 @@ int main(int argc, char* argv[])
         auto signalDaemon = SignalDaemon();
 #endif
         auto kdsa =
-          KDSingleApplication(QStringLiteral("org.flameshot.Flameshot"));
+          KDSingleApplication(QStringLiteral("org.shotup.Shotup"));
 
         if (!kdsa.isPrimaryInstance()) {
             return 0; // Quit
@@ -227,8 +227,8 @@ int main(int argc, char* argv[])
 #endif
 
         configureApp(true, translator, qtTranslator);
-        auto c = Flameshot::instance();
-        FlameshotDaemon::start();
+        auto c = Shotup::instance();
+        ShotupDaemon::start();
 
 #if defined(USE_KDSINGLEAPPLICATION) &&                                        \
   (defined(Q_OS_MACOS) || defined(Q_OS_WIN))
@@ -236,20 +236,20 @@ int main(int argc, char* argv[])
             QObject::connect(
               &kdsa,
               &KDSingleApplication::messageReceived,
-              FlameshotDaemon::instance(),
-              &FlameshotDaemon::messageReceivedFromSecondaryInstance);
+              ShotupDaemon::instance(),
+              &ShotupDaemon::messageReceivedFromSecondaryInstance);
         }
 #endif
 
 #if !(defined(Q_OS_MACOS) || defined(Q_OS_WIN))
-        new FlameshotDBusAdapter(c);
+        new ShotupDBusAdapter(c);
         QDBusConnection dbus = QDBusConnection::sessionBus();
         if (!dbus.isConnected()) {
             AbstractLogger::error()
               << QObject::tr("Unable to connect via DBus");
         }
         dbus.registerObject(QStringLiteral("/"), c);
-        dbus.registerService(QStringLiteral("org.flameshot.Flameshot"));
+        dbus.registerService(QStringLiteral("org.shotup.Shotup"));
 #endif
         return qApp->exec();
     }
@@ -264,7 +264,7 @@ int main(int argc, char* argv[])
     // Add description
     parser.setDescription(
       QObject::tr("Powerful yet simple to use screenshot software."));
-    parser.setGeneralErrorMessage(QObject::tr("See") + " flameshot --help.");
+    parser.setGeneralErrorMessage(QObject::tr("See") + " shotup --help.");
     // Arguments
     CommandArgument fullArgument(
       QStringLiteral("full"),
@@ -275,7 +275,7 @@ int main(int argc, char* argv[])
       QStringLiteral("gui"),
       QObject::tr("Start a manual capture in GUI mode."));
     CommandArgument configArgument(QStringLiteral("config"),
-                                   QObject::tr("Configure") + " flameshot.");
+                                   QObject::tr("Configure") + " shotup.");
     CommandArgument screenArgument(
       QStringLiteral("screen"),
       QObject::tr("Capture a screenshot of the specified monitor."));
@@ -458,17 +458,17 @@ int main(int argc, char* argv[])
 
     // PROCESS DATA
     //--------------
-    Flameshot::setOrigin(Flameshot::CLI);
+    Shotup::setOrigin(Shotup::CLI);
     if (parser.isSet(helpOption) || parser.isSet(versionOption)) {
     } else if (parser.isSet(launcherArgument)) { // LAUNCHER
         reinitializeAsQApplication(argc, argv, translator, qtTranslator);
-        Flameshot* flameshot = Flameshot::instance();
-        flameshot->launcher();
+        Shotup* shotup = Shotup::instance();
+        shotup->launcher();
         qApp->exec();
     } else if (parser.isSet(guiArgument)) { // GUI
         reinitializeAsQApplication(argc, argv, translator, qtTranslator);
 
-        // Prevent multiple instances of 'flameshot gui' from running if not
+        // Prevent multiple instances of 'shotup gui' from running if not
         // configured to do so.
         if (!ConfigHandler().allowMultipleGuiInstances()) {
             auto* mutex = guiMutexLock();
@@ -588,7 +588,7 @@ int main(int argc, char* argv[])
                 AbstractLogger::error()
                   << "The 'screen' command does not support "
                      "'--region screen<N>'.\n"
-                     "See flameshot --help.\n";
+                     "See shotup --help.\n";
                 exit(1);
             }
             req.setInitialSelection(Region().value(region).toRect());
@@ -640,7 +640,7 @@ int main(int argc, char* argv[])
             reinitializeAsQApplication(argc, argv, translator, qtTranslator);
             QObject::connect(
               qApp, &QApplication::lastWindowClosed, qApp, &QApplication::quit);
-            Flameshot::instance()->config();
+            Shotup::instance()->config();
             qApp->exec();
         } else {
             ConfigHandler config;

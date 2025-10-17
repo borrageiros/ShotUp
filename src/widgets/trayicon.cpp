@@ -1,7 +1,7 @@
 #include "trayicon.h"
 
-#include "src/core/flameshot.h"
-#include "src/core/flameshotdaemon.h"
+#include "src/core/shotup.h"
+#include "src/core/shotupdaemon.h"
 #include "src/utils/globalvalues.h"
 
 #include "src/utils/confighandler.h"
@@ -20,7 +20,7 @@ TrayIcon::TrayIcon(QObject* parent)
 {
     initMenu();
 
-    setToolTip(QStringLiteral("Flameshot"));
+    setToolTip(QStringLiteral("Shotup"));
 #if defined(Q_OS_MACOS)
     // Because of the following issues on MacOS "Catalina":
     // https://bugreports.qt.io/browse/QTBUG-86393
@@ -33,7 +33,7 @@ TrayIcon::TrayIcon(QObject* parent)
     setContextMenu(m_menu);
 #endif
     QIcon icon =
-      QIcon::fromTheme("flameshot-tray", QIcon(GlobalValues::trayIconPath()));
+      QIcon::fromTheme("shotup-tray", QIcon(GlobalValues::trayIconPath()));
 
 #if defined(Q_OS_MACOS)
     if (currentMacOsVersion >= QOperatingSystemVersion::MacOSBigSur) {
@@ -74,7 +74,7 @@ TrayIcon::TrayIcon(QObject* parent)
 
     if (ConfigHandler().showStartupLaunchMessage()) {
         showMessage(
-          "Flameshot",
+          "Shotup",
           QObject::tr(
             "Hello, I'm here! Click icon in the tray to take a screenshot or "
             "click with a right button to see more options."),
@@ -128,26 +128,26 @@ void TrayIcon::initMenu()
     auto* launcherAction = new QAction(tr("&Open Launcher"), this);
     connect(launcherAction,
             &QAction::triggered,
-            Flameshot::instance(),
-            &Flameshot::launcher);
+            Shotup::instance(),
+            &Shotup::launcher);
     auto* configAction = new QAction(tr("&Configuration"), this);
     connect(configAction,
             &QAction::triggered,
-            Flameshot::instance(),
-            &Flameshot::config);
+            Shotup::instance(),
+            &Shotup::config);
     auto* infoAction = new QAction(tr("&About"), this);
     connect(
-      infoAction, &QAction::triggered, Flameshot::instance(), &Flameshot::info);
+      infoAction, &QAction::triggered, Shotup::instance(), &Shotup::info);
 
 #if !defined(DISABLE_UPDATE_CHECKER)
     m_appUpdates = new QAction(tr("Check for updates"), this);
     connect(m_appUpdates,
             &QAction::triggered,
-            FlameshotDaemon::instance(),
-            &FlameshotDaemon::checkForUpdates);
+            ShotupDaemon::instance(),
+            &ShotupDaemon::checkForUpdates);
 
-    connect(FlameshotDaemon::instance(),
-            &FlameshotDaemon::newVersionAvailable,
+    connect(ShotupDaemon::instance(),
+            &ShotupDaemon::newVersionAvailable,
             this,
             [this](const QVersionNumber& version) {
                 QString newVersion =
@@ -164,14 +164,14 @@ void TrayIcon::initMenu()
     QAction* recentAction = new QAction(tr("&Latest Uploads"), this);
     connect(recentAction,
             &QAction::triggered,
-            Flameshot::instance(),
-            &Flameshot::history);
+            Shotup::instance(),
+            &Shotup::history);
 #endif
     auto* openSavePathAction = new QAction(tr("&Open Save Path"), this);
     connect(openSavePathAction,
             &QAction::triggered,
-            Flameshot::instance(),
-            &Flameshot::openSavePath);
+            Shotup::instance(),
+            &Shotup::openSavePath);
 
     m_menu->addAction(m_captureAction);
     m_menu->addAction(launcherAction);
@@ -211,15 +211,15 @@ void TrayIcon::enableCheckUpdatesAction(bool enable)
         m_appUpdates->setEnabled(enable);
     }
     if (enable) {
-        FlameshotDaemon::instance()->getLatestAvailableVersion();
+        ShotupDaemon::instance()->getLatestAvailableVersion();
     }
 }
 #endif
 
 void TrayIcon::startGuiCapture()
 {
-    auto* widget = Flameshot::instance()->gui();
+    auto* widget = Shotup::instance()->gui();
 #if !defined(DISABLE_UPDATE_CHECKER)
-    FlameshotDaemon::instance()->showUpdateNotificationIfAvailable(widget);
+    ShotupDaemon::instance()->showUpdateNotificationIfAvailable(widget);
 #endif
 }

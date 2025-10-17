@@ -53,7 +53,7 @@ prime/
 stage/
 *.snap
 .snapcraft/
-flameshot*.tar.bz2
+shotup*.tar.bz2
 
 .vscode/
 build/

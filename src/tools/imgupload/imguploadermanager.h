@@ -2,8 +2,8 @@
 // SPDX-FileCopyrightText: Yurii Puchkov & Contributors
 //
 
-#ifndef FLAMESHOT_IMGUPLOADERMANAGER_H
-#define FLAMESHOT_IMGUPLOADERMANAGER_H
+#ifndef SHOTUP_IMGUPLOADERMANAGER_H
+#define SHOTUP_IMGUPLOADERMANAGER_H
 
 #include "src/tools/imgupload/storages/imguploaderbase.h"
 #include <QObject>
@@ -35,4 +35,4 @@ private:
     QString m_imgUploaderPlugin;
 };
 
-#endif // FLAMESHOT_IMGUPLOADERMANAGER_H
+#endif // SHOTUP_IMGUPLOADERMANAGER_H

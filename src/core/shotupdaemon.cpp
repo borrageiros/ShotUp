@@ -1,8 +1,8 @@
-#include "flameshotdaemon.h"
+#include "shotupdaemon.h"
 
 #include "abstractlogger.h"
 #include "confighandler.h"
-#include "flameshot.h"
+#include "shotup.h"
 #include "pinwidget.h"
 #include "screenshotsaver.h"
 #include "src/utils/globalvalues.h"
@@ -40,22 +40,22 @@
 #endif
 
 /**
- * @brief A way of accessing the flameshot daemon both from the daemon itself,
+ * @brief A way of accessing the shotup daemon both from the daemon itself,
  * and from subcommands.
  *
  * The daemon is necessary in order to:
  * - Host the system tray,
  * - Listen for hotkey events that will trigger captures,
  * - Host pinned screenshot widgets,
- * - Host the clipboard on X11, where the clipboard gets lost once flameshot
+ * - Host the clipboard on X11, where the clipboard gets lost once shotup
  *   quits.
  *
  * If the `autoCloseIdleDaemon` option is true, the daemon will close as soon as
  * it is not needed to host pinned screenshots and the clipboard. On Windows,
  * this option is disabled and the daemon always persists, because the system
- * tray is currently the only way to interact with flameshot there.
+ * tray is currently the only way to interact with shotup there.
  *
- * Both the daemon and non-daemon flameshot processes use the same public API,
+ * Both the daemon and non-daemon shotup processes use the same public API,
  * which is implemented as static methods. In the daemon process, this class is
  * also instantiated as a singleton, so it can listen to D-Bus calls via the
  * sigslot mechanism. The instantiation is done by calling `start` (this must be
@@ -65,7 +65,7 @@
  * @note The daemon will be automatically launched where necessary, via D-Bus.
  * This applies only to Linux.
  */
-FlameshotDaemon::FlameshotDaemon()
+ShotupDaemon::ShotupDaemon()
   : m_persist(false)
   , m_hostingClipboard(false)
   , m_clipboardSignalBlocked(false)
@@ -106,17 +106,17 @@ FlameshotDaemon::FlameshotDaemon()
 #endif
 }
 
-void FlameshotDaemon::start()
+void ShotupDaemon::start()
 {
     if (!m_instance) {
-        m_instance = new FlameshotDaemon();
-        // Tray icon needs FlameshotDaemon::instance() to be non-null
+        m_instance = new ShotupDaemon();
+        // Tray icon needs ShotupDaemon::instance() to be non-null
         m_instance->initTrayIcon();
         qApp->setQuitOnLastWindowClosed(false);
     }
 }
 
-void FlameshotDaemon::createPin(const QPixmap& capture, QRect geometry)
+void ShotupDaemon::createPin(const QPixmap& capture, QRect geometry)
 {
     if (instance()) {
         instance()->attachPin(capture, geometry);
@@ -128,7 +128,7 @@ void FlameshotDaemon::createPin(const QPixmap& capture, QRect geometry)
 
 #if defined(USE_KDSINGLEAPPLICATION) &&                                        \
   (defined(Q_OS_MACOS) || defined(Q_OS_WIN))
-    auto kdsa = KDSingleApplication(QStringLiteral("org.flameshot.Flameshot"));
+    auto kdsa = KDSingleApplication(QStringLiteral("org.shotup.Shotup"));
     stream << QStringLiteral("attachPin") << capture << geometry;
     kdsa.sendMessage(data);
 #else
@@ -139,7 +139,7 @@ void FlameshotDaemon::createPin(const QPixmap& capture, QRect geometry)
 #endif
 }
 
-void FlameshotDaemon::copyToClipboard(const QPixmap& capture)
+void ShotupDaemon::copyToClipboard(const QPixmap& capture)
 {
     if (instance()) {
         instance()->attachScreenshotToClipboard(capture);
@@ -151,7 +151,7 @@ void FlameshotDaemon::copyToClipboard(const QPixmap& capture)
 
 #if defined(USE_KDSINGLEAPPLICATION) &&                                        \
   (defined(Q_OS_MACOS) || defined(Q_OS_WIN))
-    auto kdsa = KDSingleApplication(QStringLiteral("org.flameshot.Flameshot"));
+    auto kdsa = KDSingleApplication(QStringLiteral("org.shotup.Shotup"));
     stream << QStringLiteral("attachScreenshotToClipboard") << capture;
     kdsa.sendMessage(data);
 #else
@@ -164,7 +164,7 @@ void FlameshotDaemon::copyToClipboard(const QPixmap& capture)
 #endif
 }
 
-void FlameshotDaemon::copyToClipboard(const QString& text,
+void ShotupDaemon::copyToClipboard(const QString& text,
                                       const QString& notification)
 {
     if (instance()) {
@@ -174,7 +174,7 @@ void FlameshotDaemon::copyToClipboard(const QString& text,
 
 #if defined(USE_KDSINGLEAPPLICATION) &&                                        \
   (defined(Q_OS_MACOS) || defined(Q_OS_WIN))
-    auto kdsa = KDSingleApplication(QStringLiteral("org.flameshot.Flameshot"));
+    auto kdsa = KDSingleApplication(QStringLiteral("org.shotup.Shotup"));
     QByteArray data;
     QDataStream stream(&data, QIODevice::WriteOnly);
     stream << QStringLiteral("attachTextToClipboard") << text << notification;
@@ -187,14 +187,14 @@ void FlameshotDaemon::copyToClipboard(const QString& text,
 }
 
 /**
- * @brief Is this instance of flameshot hosting any windows as a daemon?
+ * @brief Is this instance of shotup hosting any windows as a daemon?
  */
-bool FlameshotDaemon::isThisInstanceHostingWidgets()
+bool ShotupDaemon::isThisInstanceHostingWidgets()
 {
     return instance() && !instance()->m_widgets.isEmpty();
 }
 
-void FlameshotDaemon::sendTrayNotification(const QString& text,
+void ShotupDaemon::sendTrayNotification(const QString& text,
                                            const QString& title,
                                            const int timeout)
 {
@@ -205,7 +205,7 @@ void FlameshotDaemon::sendTrayNotification(const QString& text,
 }
 
 #if !defined(DISABLE_UPDATE_CHECKER)
-void FlameshotDaemon::showUpdateNotificationIfAvailable(CaptureWidget* widget)
+void ShotupDaemon::showUpdateNotificationIfAvailable(CaptureWidget* widget)
 {
     if (!m_appLatestUrl.isEmpty() &&
         ConfigHandler().ignoreUpdateToVersion().compare(m_appLatestVersion) <
@@ -214,17 +214,17 @@ void FlameshotDaemon::showUpdateNotificationIfAvailable(CaptureWidget* widget)
     }
 }
 
-void FlameshotDaemon::getLatestAvailableVersion()
+void ShotupDaemon::getLatestAvailableVersion()
 {
     // This features is required for MacOS and Windows user and for Linux users
-    // who installed Flameshot not from the repository.
-    QNetworkRequest requestCheckUpdates(QUrl(FLAMESHOT_APP_VERSION_URL));
+    // who installed Shotup not from the repository.
+    QNetworkRequest requestCheckUpdates(QUrl(SHOTUP_APP_VERSION_URL));
     if (nullptr == m_networkCheckUpdates) {
         m_networkCheckUpdates = new QNetworkAccessManager(this);
         connect(m_networkCheckUpdates,
                 &QNetworkAccessManager::finished,
                 this,
-                &FlameshotDaemon::handleReplyCheckUpdates);
+                &ShotupDaemon::handleReplyCheckUpdates);
     }
     m_networkCheckUpdates->get(requestCheckUpdates);
 
@@ -236,7 +236,7 @@ void FlameshotDaemon::getLatestAvailableVersion()
     });
 }
 
-void FlameshotDaemon::checkForUpdates()
+void ShotupDaemon::checkForUpdates()
 {
     if (m_appLatestUrl.isEmpty()) {
         m_showCheckAppUpdateStatus = true;
@@ -250,18 +250,18 @@ void FlameshotDaemon::checkForUpdates()
 /**
  * @brief Return the daemon instance.
  *
- * If this instance of flameshot is the daemon, a singleton instance of
- * `FlameshotDaemon` is returned. As a side effect`start` will called if it
- * wasn't called earlier. If this instance of flameshot is not the daemon,
+ * If this instance of shotup is the daemon, a singleton instance of
+ * `ShotupDaemon` is returned. As a side effect`start` will called if it
+ * wasn't called earlier. If this instance of shotup is not the daemon,
  * `nullptr` is returned.
  *
  * This strategy is used because the daemon needs to receive signals from D-Bus,
  * for which an instance of a `QObject` is required. The singleton serves as
  * that object.
  */
-FlameshotDaemon* FlameshotDaemon::instance()
+ShotupDaemon* ShotupDaemon::instance()
 {
-    // Because we don't use DBus on MacOS, each instance of flameshot is its own
+    // Because we don't use DBus on MacOS, each instance of shotup is its own
     // mini-daemon, responsible for hosting its own persistent widgets (e.g.
     // pins).
 #if defined(Q_OS_MACOS)
@@ -274,7 +274,7 @@ FlameshotDaemon* FlameshotDaemon::instance()
  * @brief Quit the daemon if it has nothing to do and the 'persist' flag is not
  * set.
  */
-void FlameshotDaemon::quitIfIdle()
+void ShotupDaemon::quitIfIdle()
 {
     if (m_persist) {
         return;
@@ -286,7 +286,7 @@ void FlameshotDaemon::quitIfIdle()
 
 // SERVICE METHODS
 
-void FlameshotDaemon::attachPin(const QPixmap& pixmap, QRect geometry)
+void ShotupDaemon::attachPin(const QPixmap& pixmap, QRect geometry)
 {
     auto* pinWidget = new PinWidget(pixmap, geometry);
     m_widgets.append(pinWidget);
@@ -299,7 +299,7 @@ void FlameshotDaemon::attachPin(const QPixmap& pixmap, QRect geometry)
     pinWidget->activateWindow();
 }
 
-void FlameshotDaemon::attachScreenshotToClipboard(const QPixmap& pixmap)
+void ShotupDaemon::attachScreenshotToClipboard(const QPixmap& pixmap)
 {
     m_hostingClipboard = true;
     QClipboard* clipboard = QApplication::clipboard();
@@ -313,7 +313,7 @@ void FlameshotDaemon::attachScreenshotToClipboard(const QPixmap& pixmap)
 
 // D-BUS / KDSingleApplication METHODS
 
-void FlameshotDaemon::attachPin(const QByteArray& data)
+void ShotupDaemon::attachPin(const QByteArray& data)
 {
     QDataStream stream(data);
     QPixmap pixmap;
@@ -325,7 +325,7 @@ void FlameshotDaemon::attachPin(const QByteArray& data)
     attachPin(pixmap, geometry);
 }
 
-void FlameshotDaemon::attachScreenshotToClipboard(const QByteArray& screenshot)
+void ShotupDaemon::attachScreenshotToClipboard(const QByteArray& screenshot)
 {
     QDataStream stream(screenshot);
     QPixmap p;
@@ -334,7 +334,7 @@ void FlameshotDaemon::attachScreenshotToClipboard(const QByteArray& screenshot)
     attachScreenshotToClipboard(p);
 }
 
-void FlameshotDaemon::attachTextToClipboard(const QString& text,
+void ShotupDaemon::attachTextToClipboard(const QString& text,
                                             const QString& notification)
 {
     // Must send notification before clipboard modification on linux
@@ -353,7 +353,7 @@ void FlameshotDaemon::attachTextToClipboard(const QString& text,
     clipboard->blockSignals(false);
 }
 
-void FlameshotDaemon::initTrayIcon()
+void ShotupDaemon::initTrayIcon()
 {
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
     if (!ConfigHandler().disabledTrayIcon()) {
@@ -365,12 +365,12 @@ void FlameshotDaemon::initTrayIcon()
     GlobalShortcutFilter* nativeFilter = new GlobalShortcutFilter(this);
     qApp->installNativeEventFilter(nativeFilter);
     connect(nativeFilter, &GlobalShortcutFilter::printPressed, this, [this]() {
-        Flameshot::instance()->gui();
+        Shotup::instance()->gui();
     });
 #endif
 }
 
-void FlameshotDaemon::enableTrayIcon(bool enable)
+void ShotupDaemon::enableTrayIcon(bool enable)
 {
     if (enable) {
         if (m_trayIcon == nullptr) {
@@ -385,7 +385,7 @@ void FlameshotDaemon::enableTrayIcon(bool enable)
 }
 
 #if !defined(DISABLE_UPDATE_CHECKER)
-void FlameshotDaemon::handleReplyCheckUpdates(QNetworkReply* reply)
+void ShotupDaemon::handleReplyCheckUpdates(QNetworkReply* reply)
 {
     if (!ConfigHandler().checkForUpdates()) {
         return;
@@ -397,27 +397,27 @@ void FlameshotDaemon::handleReplyCheckUpdates(QNetworkReply* reply)
 
         QVersionNumber appLatestVersion =
           QVersionNumber::fromString(m_appLatestVersion);
-        if (Flameshot::instance()->getVersion() < appLatestVersion) {
+        if (Shotup::instance()->getVersion() < appLatestVersion) {
             emit newVersionAvailable(appLatestVersion);
             m_appLatestUrl = json["html_url"].toString();
             QString newVersion =
               tr("New version %1 is available").arg(m_appLatestVersion);
             if (m_showCheckAppUpdateStatus) {
-                sendTrayNotification(newVersion, "Flameshot");
+                sendTrayNotification(newVersion, "Shotup");
                 QDesktopServices::openUrl(QUrl(m_appLatestUrl));
             }
         } else if (m_showCheckAppUpdateStatus) {
             sendTrayNotification(tr("You have the latest version"),
-                                 "Flameshot");
+                                 "Shotup");
         }
     } else {
         qWarning() << "Failed to get information about the latest version. "
                    << reply->errorString();
         if (m_showCheckAppUpdateStatus) {
-            if (FlameshotDaemon::instance()) {
-                FlameshotDaemon::instance()->sendTrayNotification(
+            if (ShotupDaemon::instance()) {
+                ShotupDaemon::instance()->sendTrayNotification(
                   tr("Failed to get information about the latest version."),
-                  "Flameshot");
+                  "Shotup");
             }
         }
     }
@@ -426,17 +426,17 @@ void FlameshotDaemon::handleReplyCheckUpdates(QNetworkReply* reply)
 #endif
 
 #if !(defined(Q_OS_MACOS) || defined(Q_OS_WIN))
-QDBusMessage FlameshotDaemon::createMethodCall(const QString& method)
+QDBusMessage ShotupDaemon::createMethodCall(const QString& method)
 {
     QDBusMessage m =
-      QDBusMessage::createMethodCall(QStringLiteral("org.flameshot.Flameshot"),
+      QDBusMessage::createMethodCall(QStringLiteral("org.shotup.Shotup"),
                                      QStringLiteral("/"),
                                      QLatin1String(""),
                                      method);
     return m;
 }
 
-void FlameshotDaemon::checkDBusConnection(const QDBusConnection& connection)
+void ShotupDaemon::checkDBusConnection(const QDBusConnection& connection)
 {
     if (!connection.isConnected()) {
         AbstractLogger::error() << tr("Unable to connect via DBus");
@@ -444,7 +444,7 @@ void FlameshotDaemon::checkDBusConnection(const QDBusConnection& connection)
     }
 }
 
-void FlameshotDaemon::call(const QDBusMessage& m)
+void ShotupDaemon::call(const QDBusMessage& m)
 {
     QDBusConnection sessionBus = QDBusConnection::sessionBus();
     checkDBusConnection(sessionBus);
@@ -454,7 +454,7 @@ void FlameshotDaemon::call(const QDBusMessage& m)
 
 #if defined(USE_KDSINGLEAPPLICATION) &&                                        \
   (defined(Q_OS_MACOS) || defined(Q_OS_WIN))
-void FlameshotDaemon::messageReceivedFromSecondaryInstance(
+void ShotupDaemon::messageReceivedFromSecondaryInstance(
   const QByteArray& message)
 {
     // qDebug() << "Received message from second instance:" << message;
@@ -474,7 +474,7 @@ void FlameshotDaemon::messageReceivedFromSecondaryInstance(
         // qDebug() << "Pixmap:" << capture;
         // qDebug() << "Geometry:" << geometry;
         if (!capture.isNull()) {
-            FlameshotDaemon::instance()->attachPin(capture, geometry);
+            ShotupDaemon::instance()->attachPin(capture, geometry);
         } else {
             qWarning() << "Received \"attachPin\" from second instance, but "
                           "pixmap is empty!";
@@ -484,7 +484,7 @@ void FlameshotDaemon::messageReceivedFromSecondaryInstance(
         stream >> capture;
         // qDebug() << "Pixmap:" << capture;
         if (!capture.isNull()) {
-            FlameshotDaemon::instance()->attachScreenshotToClipboard(capture);
+            ShotupDaemon::instance()->attachScreenshotToClipboard(capture);
         } else {
             qWarning() << "Received \"attachScreenshotToClipboard\" from "
                           "second instance, but pixmap is empty!";
@@ -496,7 +496,7 @@ void FlameshotDaemon::messageReceivedFromSecondaryInstance(
         // qDebug() << "Text:" << text;
         // qDebug() << "Notification:" << notification;
         if (!text.isEmpty()) {
-            FlameshotDaemon::instance()->attachTextToClipboard(text,
+            ShotupDaemon::instance()->attachTextToClipboard(text,
                                                                notification);
         } else {
             qWarning() << "Received \"attachTextToClipboard\" from second "
@@ -510,4 +510,4 @@ void FlameshotDaemon::messageReceivedFromSecondaryInstance(
 #endif
 
 // STATIC ATTRIBUTES
-FlameshotDaemon* FlameshotDaemon::m_instance = nullptr;
+ShotupDaemon* ShotupDaemon::m_instance = nullptr;

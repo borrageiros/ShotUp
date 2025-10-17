@@ -1,14 +1,14 @@
 #
-# spec file for package flameshot on fedora, rhel
+# spec file for package shotup on fedora, rhel
 #
-Name:    flameshot
+Name:    shotup
 Version: 13.1.0
 Release: 2%{?dist}
 License: GPLv3+ and ASL 2.0 and GPLv2 and LGPLv3 and Free Art
 Summary: Powerful yet simple to use screenshot software
-URL:     https://github.com/flameshot-org/flameshot
+URL:     https://github.com/shotup-org/shotup
 Source0: %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-Vendor:  Flameshot
+Vendor:  Shotup
 
 BuildRequires: cmake >= 3.13.0
 BuildRequires: gcc-c++ >= 7
@@ -84,13 +84,13 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 %dir %{_datadir}/bash-completion/completions
 %dir %{_datadir}/zsh/site-functions
 %{_bindir}/%{name}
-%{_datadir}/applications/org.flameshot.Flameshot.desktop
-%{_metainfodir}/org.flameshot.Flameshot.metainfo.xml
+%{_datadir}/applications/org.shotup.Shotup.desktop
+%{_metainfodir}/org.shotup.Shotup.metainfo.xml
 %{_datadir}/bash-completion/completions/%{name}
 %{_datadir}/zsh/site-functions/_%{name}
 %{_datadir}/fish/vendor_completions.d/%{name}.fish
-%{_datadir}/dbus-1/interfaces/org.flameshot.Flameshot.xml
-%{_datadir}/dbus-1/services/org.flameshot.Flameshot.service
+%{_datadir}/dbus-1/interfaces/org.shotup.Shotup.xml
+%{_datadir}/dbus-1/services/org.shotup.Shotup.service
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
 %{_mandir}/man1/%{name}.1*
@@ -127,31 +127,31 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 - Minor SPEC fixes.
 
 * Sun Jul 25 2021 Jeremy Borgman <borgman.jeremy@pm.me> - 0.10.1-1
-- Updated for flameshot 0.10.1
+- Updated for shotup 0.10.1
 
 * Mon May 17 2021 Jeremy Borgman <borgman.jeremy@pm.me> - 0.10.0-1
-- Updated for flameshot 0.10.0
+- Updated for shotup 0.10.0
 
 * Sat Feb 27 2021 Jeremy Borgman <borgman.jeremy@pm.me> - 0.9.0-1
-- Updated for flameshot 0.9.0
+- Updated for shotup 0.9.0
 
 * Wed Oct 14 2020 Jeremy Borgman <borgman.jeremy@pm.me> - 0.8.5-1
-- Updated for flameshot 0.8.5
+- Updated for shotup 0.8.5
 
 * Sat Oct 10 2020 Jeremy Borgman <borgman.jeremy@pm.me> - 0.8.4-1
-- Updated for flameshot 0.8.4
+- Updated for shotup 0.8.4
 
 * Sat Sep 19 2020 Jeremy Borgman <borgman.jeremy@pm.me> - 0.8.3-1
-- Updated for flameshot 0.8.3
+- Updated for shotup 0.8.3
 
 * Mon Sep 07 2020 Zetao Yang <vitzys@outlook.com> - 0.8.0-1
-- Updated for flameshot 0.8.0
-- More details, please see https://flameshot.org/changelog/#v080
+- Updated for shotup 0.8.0
+- More details, please see https://shotup.org/changelog/#v080
 
 * Sat Aug 18 2018 Zetao Yang <vitzys@outlook.com> - 0.6.0-1
-- Updated for flameshot 0.6.0
-- More details, please see https://flameshot.org/changelog/#v060
+- Updated for shotup 0.6.0
+- More details, please see https://shotup.org/changelog/#v060
 
 * Tue Jan 09 2018 Zetao Yang <vitzys@outlook.com> - 0.5.0-1
-- Initial package for flameshot 0.5.0
-- More details, please see https://flameshot.org/changelog/#v050
+- Initial package for shotup 0.5.0
+- More details, please see https://shotup.org/changelog/#v050

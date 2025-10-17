@@ -3,8 +3,8 @@
 //
 // Created by jeremy on 9/24/20.
 
-#ifndef FLAMESHOT_STYLEOVERRIDE_H
-#define FLAMESHOT_STYLEOVERRIDE_H
+#ifndef SHOTUP_STYLEOVERRIDE_H
+#define SHOTUP_STYLEOVERRIDE_H
 
 #include <QObject>
 #include <QProxyStyle>
@@ -19,4 +19,4 @@ public:
                   QStyleHintReturn* returnData = Q_NULLPTR) const;
 };
 
-#endif // FLAMESHOT_STYLEOVERRIDE_H
+#endif // SHOTUP_STYLEOVERRIDE_H

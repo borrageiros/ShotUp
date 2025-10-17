@@ -30,7 +30,7 @@ enum ErrCode : uint8_t
     E_SIGTERM = E_SIG_BASE + 15,
 };
 
-class Flameshot : public QObject
+class Shotup : public QObject
 {
     Q_OBJECT
 
@@ -41,7 +41,7 @@ public:
         DAEMON
     };
 
-    static Flameshot* instance();
+    static Shotup* instance();
 
 public slots:
     CaptureWidget* gui(
@@ -78,7 +78,7 @@ public slots:
                        const CaptureRequest& req);
 
 private:
-    Flameshot();
+    Shotup();
     bool resolveAnyConfigErrors();
 
     // class members

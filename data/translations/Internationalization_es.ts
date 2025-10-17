@@ -141,50 +141,50 @@
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="100"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="184"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="184"/>
         <location filename="../../src/widgets/capturelauncher.cpp" line="53"/>
         <source> seconds</source>
         <translation> segundos</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="165"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="185"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="185"/>
         <source>Take new screenshot</source>
         <translation>Tomar nueva captura de pantalla</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="66"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="180"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="180"/>
         <source>Area:</source>
         <translation>Área:</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="14"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="177"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="177"/>
         <source>Capture Launcher</source>
         <translation>Capturar Lanzador</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="34"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="178"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="178"/>
         <source>TextLabel</source>
         <translation>Etiqueta de texto</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="51"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="179"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="179"/>
         <source>Capture Mode</source>
         <translation>Modo de Captura</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="80"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="182"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="182"/>
         <source>Delay:</source>
         <translation>Demora:</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="93"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="183"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="183"/>
         <source>WxH+x+y</source>
         <translation>WxH+x+y</translation>
     </message>
@@ -258,13 +258,13 @@
     </message>
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="727"/>
-        <source>Flameshot has lost focus. Keyboard shortcuts won&apos;t work until you click somewhere.</source>
-        <translation>Flameshot ha perdido el foco. Los atajos de teclado no funcionarán a menos de que hagas clic en alguna parte.</translation>
+        <source>Shotup has lost focus. Keyboard shortcuts won&apos;t work until you click somewhere.</source>
+        <translation>Shotup ha perdido el foco. Los atajos de teclado no funcionarán a menos de que hagas clic en alguna parte.</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="733"/>
-        <source>Configuration error resolved. Launch `flameshot gui` again to apply it.</source>
-        <translation>Error de configuración resuelto. Lanza `flameshot gui` de nuevo para aplicarlo.</translation>
+        <source>Configuration error resolved. Launch `shotup gui` again to apply it.</source>
+        <translation>Error de configuración resuelto. Lanza `shotup gui` de nuevo para aplicarlo.</translation>
     </message>
     <message>
         <source>Select an area with the mouse, or press Esc to exit.
@@ -580,10 +580,10 @@ Presiona Espacio para abrir el panel lateral.</translation>
     <message>
         <location filename="../../src/config/configresolver.cpp" line="90"/>
         <source>Some keyboard shortcuts have conflicts.
-This will NOT prevent flameshot from starting.
+This will NOT prevent shotup from starting.
 Please solve them manually in the configuration file.</source>
         <translation>Algunos atajos de teclado tienen conflictos.
-Esto NO impedirá que Flameshot inicie.
+Esto NO impedirá que Shotup inicie.
 Por favor, resuélvelos manualmente en el archivo de configuración.</translation>
     </message>
     <message>
@@ -789,42 +789,42 @@ Por favor, resuélvelos manualmente en el archivo de configuración.</translatio
     </message>
 </context>
 <context>
-    <name>Flameshot</name>
+    <name>Shotup</name>
     <message>
-        <location filename="../../src/core/flameshot.cpp" line="119"/>
+        <location filename="../../src/core/shotup.cpp" line="119"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshot.cpp" line="119"/>
+        <location filename="../../src/core/shotup.cpp" line="119"/>
         <source>Unable to close active modal widgets</source>
         <translation>No es posible cerrar los widgets modales activos</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshot.cpp" line="431"/>
+        <location filename="../../src/core/shotup.cpp" line="431"/>
         <source>URL copied to clipboard.</source>
         <translation>URL copiada al portapapeles.</translation>
     </message>
 </context>
 <context>
-    <name>FlameshotDaemon</name>
+    <name>ShotupDaemon</name>
     <message>
-        <location filename="../../src/core/flameshotdaemon.cpp" line="407"/>
+        <location filename="../../src/core/shotupdaemon.cpp" line="407"/>
         <source>New version %1 is available</source>
         <translation>Nueva versión %1 está disponible</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshotdaemon.cpp" line="413"/>
+        <location filename="../../src/core/shotupdaemon.cpp" line="413"/>
         <source>You have the latest version</source>
         <translation>Tienes la última versión</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshotdaemon.cpp" line="422"/>
+        <location filename="../../src/core/shotupdaemon.cpp" line="422"/>
         <source>Failed to get information about the latest version.</source>
         <translation>No se pudo obtener información sobre la última versión.</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshotdaemon.cpp" line="445"/>
+        <location filename="../../src/core/shotupdaemon.cpp" line="445"/>
         <source>Unable to connect via DBus</source>
         <translation>No se puede conectar a través de DBus</translation>
     </message>
@@ -896,8 +896,8 @@ Por favor, resuélvelos manualmente en el archivo de configuración.</translatio
         <translation type="vanished">Lanzar en el arranque</translation>
     </message>
     <message>
-        <source>Launch Flameshot</source>
-        <translation type="vanished">Lanzar Flameshot</translation>
+        <source>Launch Shotup</source>
+        <translation type="vanished">Lanzar Shotup</translation>
     </message>
 </context>
 <context>
@@ -1001,12 +1001,12 @@ Por favor, resuélvelos manualmente en el archivo de configuración.</translatio
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="426"/>
-        <source>Allow multiple flameshot GUI instances simultaneously</source>
-        <translation>Permitir múltiples instancias simultáneas del GUI de flameshot</translation>
+        <source>Allow multiple shotup GUI instances simultaneously</source>
+        <translation>Permitir múltiples instancias simultáneas del GUI de shotup</translation>
     </message>
     <message>
-        <source>This allows you to take screenshots of flameshot itself for example.</source>
-        <translation type="vanished">Esto te permite tomar capturas de pantalla de Flameshot mismo, por ejemplo.</translation>
+        <source>This allows you to take screenshots of shotup itself for example.</source>
+        <translation type="vanished">Esto te permite tomar capturas de pantalla de Shotup mismo, por ejemplo.</translation>
     </message>
     <message>
         <source>Automatically close daemon when it is not needed</source>
@@ -1017,8 +1017,8 @@ Por favor, resuélvelos manualmente en el archivo de configuración.</translatio
         <translation type="vanished">Lanzar en el arranque</translation>
     </message>
     <message>
-        <source>Launch Flameshot</source>
-        <translation type="vanished">Lanzar Flameshot</translation>
+        <source>Launch Shotup</source>
+        <translation type="vanished">Lanzar Shotup</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="463"/>
@@ -1110,12 +1110,12 @@ Por favor, resuélvelos manualmente en el archivo de configuración.</translatio
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="427"/>
-        <source>This allows you to take screenshots of Flameshot itself for example</source>
-        <translation>Esto le permite tomar capturas de pantalla de Flameshot mismo, por ejemplo</translation>
+        <source>This allows you to take screenshots of Shotup itself for example</source>
+        <translation>Esto le permite tomar capturas de pantalla de Shotup mismo, por ejemplo</translation>
     </message>
     <message>
-        <source>Launch Flameshot daemon when computer is booted</source>
-        <translation type="vanished">Lanzar daemon de Flameshot al iniciar el equipo</translation>
+        <source>Launch Shotup daemon when computer is booted</source>
+        <translation type="vanished">Lanzar daemon de Shotup al iniciar el equipo</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="466"/>
@@ -1157,7 +1157,7 @@ Por favor, resuélvelos manualmente en el archivo de configuración.</translatio
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="452"/>
-        <source>Launch Flameshot daemon (background process) when computer is booted</source>
+        <source>Launch Shotup daemon (background process) when computer is booted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1598,49 +1598,49 @@ Por favor, resuélvelos manualmente en el archivo de configuración.</translatio
     <name>InfoWindow</name>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="14"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="116"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="116"/>
         <source>About</source>
         <translation>Información</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="26"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="117"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="117"/>
         <source>Icon</source>
         <translation>Ícono</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="43"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="118"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="118"/>
         <source>License</source>
         <translation>Licencia</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="56"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="119"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="119"/>
         <source>GPLv3+</source>
         <translation>GPLv3+</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="89"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="120"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="120"/>
         <source>Version</source>
         <translation>Versión</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="102"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="121"/>
-        <source>Flameshot v</source>
-        <translation>Flameshot v</translation>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="121"/>
+        <source>Shotup v</source>
+        <translation>Shotup v</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="115"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="122"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="122"/>
         <source>OS Info</source>
         <translation>Información del sistema operativo</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="128"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="123"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="123"/>
         <source>Copy Info</source>
         <translation>Copiar Información</translation>
     </message>
@@ -2153,12 +2153,12 @@ Puede ser que necesites preceder el símbolo &quot;#&quot; con &quot;\&quot;, co
         <translation>Imposible escribir en</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshot.cpp" line="156"/>
+        <location filename="../../src/core/shotup.cpp" line="156"/>
         <source>Requested screen exceeds screen count</source>
         <translation>La pantalla solicitada supera el número de pantallas</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshot.cpp" line="408"/>
+        <location filename="../../src/core/shotup.cpp" line="408"/>
         <source>Full screen screenshot pinned to screen</source>
         <translation>Captura de pantalla completa fijada a la pantalla</translation>
     </message>
@@ -2201,8 +2201,8 @@ Puede ser que necesites preceder el símbolo &quot;#&quot; con &quot;\&quot;, co
     </message>
     <message>
         <location filename="../../src/cli/commandlineparser.cpp" line="334"/>
-        <source>Per default runs Flameshot in the background and adds a tray icon for configuration.</source>
-        <translation>Por defecto, Flameshot se ejecuta en segundo plano y añade un icono en la bandeja para su configuración.</translation>
+        <source>Per default runs Shotup in the background and adds a tray icon for configuration.</source>
+        <translation>Por defecto, Shotup se ejecuta en segundo plano y añade un icono en la bandeja para su configuración.</translation>
     </message>
     <message>
         <location filename="../../src/widgets/trayicon.cpp" line="71"/>
@@ -2343,7 +2343,7 @@ Puede ser que necesites preceder el símbolo &quot;#&quot; con &quot;\&quot;, co
     </message>
     <message>
         <location filename="../../src/utils/screengrabber.cpp" line="171"/>
-        <source>If the useGrimAdapter setting is not enabled, the dbus protocol will be used. It should be noted that using the dbus protocol under wayland is not recommended. It is recommended to enable the useGrimAdapter setting in flameshot.ini to activate the grim-based general wayland screenshot adapter</source>
+        <source>If the useGrimAdapter setting is not enabled, the dbus protocol will be used. It should be noted that using the dbus protocol under wayland is not recommended. It is recommended to enable the useGrimAdapter setting in shotup.ini to activate the grim-based general wayland screenshot adapter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2438,8 +2438,8 @@ Puede ser que necesites preceder el símbolo &quot;#&quot; con &quot;\&quot;, co
     <message>
         <location filename="../../src/config/setshortcutwidget.cpp" line="48"/>
         <location filename="../../src/config/setshortcutwidget.cpp" line="53"/>
-        <source>Flameshot must be restarted for changes to take effect.</source>
-        <translation>Flameshot debe ser reiniciado para que los cambios tengan efecto.</translation>
+        <source>Shotup must be restarted for changes to take effect.</source>
+        <translation>Shotup debe ser reiniciado para que los cambios tengan efecto.</translation>
     </message>
 </context>
 <context>
@@ -2767,8 +2767,8 @@ Puede ser que necesites preceder el símbolo &quot;#&quot; con &quot;\&quot;, co
     <name>SystemNotification</name>
     <message>
         <location filename="../../src/utils/systemnotification.cpp" line="42"/>
-        <source>Flameshot Info</source>
-        <translation>Información de Flameshot</translation>
+        <source>Shotup Info</source>
+        <translation>Información de Shotup</translation>
     </message>
 </context>
 <context>
@@ -2924,8 +2924,8 @@ Puede ser que necesites preceder el símbolo &quot;#&quot; con &quot;\&quot;, co
     <name>UpdateNotificationWidget</name>
     <message>
         <location filename="../../src/widgets/updatenotificationwidget.cpp" line="70"/>
-        <source>New Flameshot version %1 is available</source>
-        <translation>Nueva versión %1 de Flameshot está disponible</translation>
+        <source>New Shotup version %1 is available</source>
+        <translation>Nueva versión %1 de Shotup está disponible</translation>
     </message>
     <message>
         <location filename="../../src/widgets/updatenotificationwidget.cpp" line="123"/>

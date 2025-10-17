@@ -13,7 +13,7 @@
 #include "abstractlogger.h"
 #include "copytool.h"
 #include "src/config/cacheutils.h"
-#include "src/core/flameshot.h"
+#include "src/core/shotup.h"
 #include "src/core/qguiappcurrentscreen.h"
 #include "src/utils/screengrabber.h"
 #include "src/utils/screenshotsaver.h"
@@ -115,8 +115,8 @@ CaptureWidget::CaptureWidget(const CaptureRequest& req,
         m_context.origScreenshot = m_context.screenshot;
 
 #if defined(Q_OS_WIN)
-// Call cmake with -DFLAMESHOT_DEBUG_CAPTURE=ON to enable easier debugging
-#if !defined(FLAMESHOT_DEBUG_CAPTURE)
+// Call cmake with -DSHOTUP_DEBUG_CAPTURE=ON to enable easier debugging
+#if !defined(SHOTUP_DEBUG_CAPTURE)
         setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint |
                        Qt::SubWindow // Hides the taskbar icon
         );
@@ -147,8 +147,8 @@ CaptureWidget::CaptureWidget(const CaptureRequest& req,
         resize(currentScreen->size());
 // LINUX
 #else
-// Call cmake with -DFLAMESHOT_DEBUG_CAPTURE=ON to enable easier debugging
-#if !defined(FLAMESHOT_DEBUG_CAPTURE)
+// Call cmake with -DSHOTUP_DEBUG_CAPTURE=ON to enable easier debugging
+#if !defined(SHOTUP_DEBUG_CAPTURE)
         setWindowFlags(Qt::BypassWindowManagerHint | Qt::WindowStaysOnTopHint |
                        Qt::FramelessWindowHint | Qt::Tool);
         // Fix for Qt6 dual monitor offset: position widget to cover entire
@@ -306,10 +306,10 @@ CaptureWidget::~CaptureWidget()
         setLastRegion(lastRegion);
         QRect geometry(m_context.selection);
         geometry.setTopLeft(geometry.topLeft() + m_context.widgetOffset);
-        Flameshot::instance()->exportCapture(
+        Shotup::instance()->exportCapture(
           pixmap(), geometry, m_context.request);
     } else {
-        emit Flameshot::instance()->captureFailed();
+        emit Shotup::instance()->captureFailed();
     }
 }
 
@@ -724,13 +724,13 @@ void CaptureWidget::paintEvent(QPaintEvent* paintEvent)
 
     if (!isActiveWindow()) {
         drawErrorMessage(
-          tr("Flameshot has lost focus. Keyboard shortcuts won't "
+          tr("Shotup has lost focus. Keyboard shortcuts won't "
              "work until you click somewhere."),
           &painter);
     } else if (m_configError) {
         drawErrorMessage(ConfigHandler().errorMessage(), &painter);
     } else if (m_configErrorResolved) {
-        drawErrorMessage(tr("Configuration error resolved. Launch `flameshot "
+        drawErrorMessage(tr("Configuration error resolved. Launch `shotup "
                             "gui` again to apply it."),
                          &painter);
     }
@@ -1434,7 +1434,7 @@ void CaptureWidget::handleToolSignal(CaptureTool::Request r)
                 w->setAttribute(Qt::WA_DeleteOnClose);
                 w->activateWindow();
                 w->show();
-                Flameshot::instance()->setExternalWidget(true);
+                Shotup::instance()->setExternalWidget(true);
             }
             break;
         case CaptureTool::REQ_INCREASE_TOOL_SIZE:

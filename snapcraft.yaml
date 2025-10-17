@@ -1,11 +1,11 @@
 ---
 
-name: flameshot
-adopt-info: flameshot
+name: shotup
+adopt-info: shotup
 base: core24
 summary: Powerful yet simple to use screenshot software
 description: |
-  A powerful open source screenshot and annotation tool for Linux, Flameshot
+  A powerful open source screenshot and annotation tool for Linux, Shotup
   has a varied set of markup tools available, which include Freehand drawing,
   Lines, Arrows, Boxes, Circles, Highlighting, Blur. Additionally, you can
   customise the color, size and/or thickness of many of these image annotation
@@ -20,14 +20,14 @@ platforms:
 
 
 apps:
-  flameshot:
-    command: usr/bin/flameshot
-    desktop: usr/share/applications/org.flameshot.Flameshot.desktop
+  shotup:
+    command: usr/bin/shotup
+    desktop: usr/share/applications/org.shotup.Shotup.desktop
     extensions:
       - kde-neon-6
     environment:
       XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
-    slots: [dbus-flameshot]
+    slots: [dbus-shotup]
     plugs:
       - home
       - desktop
@@ -38,14 +38,14 @@ apps:
       - network-bind
 
 parts:
-  flameshot:
+  shotup:
     #source: ./
-    source: https://github.com/flameshot-org/flameshot.git
+    source: https://github.com/shotup-org/shotup.git
     plugin: cmake
     build-packages:
       - git
     cmake-parameters:
-      - -DFLAMESHOT_ICON=/snap/flameshot/current/usr/share/icons/hicolor/scalable/apps/flameshot.svg
+      - -DSHOTUP_ICON=/snap/shotup/current/usr/share/icons/hicolor/scalable/apps/shotup.svg
       - -DCMAKE_INSTALL_PREFIX=/usr
       - -DUSE_WAYLAND_CLIPBOARD=1
     source-type: git
@@ -59,18 +59,18 @@ parts:
     override-build: |
       craftctl default
       # Correct the Icon path
-      sed -i 's|^Icon=.*|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/org.flameshot.Flameshot.svg|' ${CRAFT_PART_INSTALL}/usr/share/applications/org.flameshot.Flameshot.desktop
-      sed -i 's/^\(Name\(\[.\+\]\)\?=.*\)$/\1 (Snap Edition)/g' ${CRAFT_PART_INSTALL}/usr/share/applications/org.flameshot.Flameshot.desktop
+      sed -i 's|^Icon=.*|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/org.shotup.Shotup.svg|' ${CRAFT_PART_INSTALL}/usr/share/applications/org.shotup.Shotup.desktop
+      sed -i 's/^\(Name\(\[.\+\]\)\?=.*\)$/\1 (Snap Edition)/g' ${CRAFT_PART_INSTALL}/usr/share/applications/org.shotup.Shotup.desktop
 
 slots:
   # Depending on in which environment we're running we either need
   # to use the system or session DBus so we also need to have one
   # slot for each.
-  dbus-flameshot:
+  dbus-shotup:
     interface: dbus
     bus: session
-    name: org.flameshot.Flameshot
+    name: org.shotup.Shotup
 
 layout:
-  /usr/share/flameshot/translations:
-    symlink: $SNAP/usr/share/flameshot/translations
+  /usr/share/shotup/translations:
+    symlink: $SNAP/usr/share/shotup/translations

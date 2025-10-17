@@ -1,11 +1,11 @@
-#compdef flameshot
+#compdef shotup
 
-# Shell completion for flameshot command
-# To be installed in "/usr/share/bash-completion/completions/flameshot"
+# Shell completion for shotup command
+# To be installed in "/usr/share/bash-completion/completions/shotup"
 # and "/usr/share/zsh/site-functions/"
 
 
-_flameshot() {
+_shotup() {
 	local prev cur cmd gui_opts full_opts config_opts
 	COMPREPLY=()
 
@@ -75,4 +75,4 @@ if [[ -n ${ZSH_VERSION} ]]; then
 	bashcompinit
 fi
 
-complete -F _flameshot flameshot
+complete -F _shotup shotup

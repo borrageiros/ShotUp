@@ -21,7 +21,7 @@ on:
 
 
 env:
-  PRODUCT: flameshot
+  PRODUCT: shotup
 
 jobs:
   windows-pack:
@@ -74,20 +74,20 @@ jobs:
         run: |
           Remove-Item "$env:LOCALAPPDATA\Microsoft\WindowsApps\python*.exe" -Force -ErrorAction SilentlyContinue
 
-      - name: Set env & Print flameshot version
+      - name: Set env & Print shotup version
         shell: bash
         run: |
           last_committed_tag=$(git tag -l --sort=-v:refname | head -1)
           git_revno=$(git rev-list $(git describe --tags --abbrev=0)..HEAD --count)
           git_hash=$(git rev-parse --short HEAD)
           ver_info=${last_committed_tag}+git${git_revno}.${git_hash}
-          echo "=======FLAMESHOT VERSION========"
+          echo "=======SHOTUP VERSION========"
           echo ${last_committed_tag:1}
           echo "Details: ${ver_info}"
           echo "================================"
           # This will allow to build pre-preleases without git tag
           # echo "VERSION=${last_committed_tag:1}" >> $GITHUB_ENV
-          echo "VERSION=$(cat CMakeLists.txt |grep 'set.*(.*FLAMESHOT_VERSION' | sed 's/[^0-9.]*//' |sed 's/)//g')" >> $GITHUB_ENV
+          echo "VERSION=$(cat CMakeLists.txt |grep 'set.*(.*SHOTUP_VERSION' | sed 's/[^0-9.]*//' |sed 's/)//g')" >> $GITHUB_ENV
           echo "VER_INFO=${ver_info}" >> $GITHUB_ENV
           echo "GIT_HASH=${git_hash}" >> $GITHUB_ENV
 
@@ -154,27 +154,27 @@ jobs:
         if:  matrix.type == 'installer'
         shell: pwsh
         run: |
-          Move-Item -Path $env:GITHUB_WORKSPACE/build/Package/Flameshot-*-${{ matrix.config.pak_arch }}.msi -Destination $env:GITHUB_WORKSPACE/build/Package/installer/Flameshot-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.msi
+          Move-Item -Path $env:GITHUB_WORKSPACE/build/Package/Shotup-*-${{ matrix.config.pak_arch }}.msi -Destination $env:GITHUB_WORKSPACE/build/Package/installer/Shotup-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.msi
 
       - name: Package Prepare (portable)
         if:  matrix.type == 'portable'
         shell: pwsh
         run: |
-          Move-Item -Path $env:GITHUB_WORKSPACE/build/Package/flameshot-*-${{ matrix.config.pak_arch }}.zip -Destination $env:GITHUB_WORKSPACE/build/Package/portable/flameshot-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.zip
+          Move-Item -Path $env:GITHUB_WORKSPACE/build/Package/shotup-*-${{ matrix.config.pak_arch }}.zip -Destination $env:GITHUB_WORKSPACE/build/Package/portable/shotup-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.zip
 
       - name: SHA256Sum of Windows installer
         if:  matrix.type == 'installer'
         shell: bash
         run: |
-          sha256sum $GITHUB_WORKSPACE/build/Package/installer/Flameshot-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.msi
-          sha256sum $GITHUB_WORKSPACE/build/Package/installer/Flameshot-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.msi > $GITHUB_WORKSPACE/build/Package/installer/Flameshot-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.msi.sha256sum
+          sha256sum $GITHUB_WORKSPACE/build/Package/installer/Shotup-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.msi
+          sha256sum $GITHUB_WORKSPACE/build/Package/installer/Shotup-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.msi > $GITHUB_WORKSPACE/build/Package/installer/Shotup-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.msi.sha256sum
 
       - name: SHA256Sum of Windows portable
         if:  matrix.type == 'portable'
         shell: bash
         run: |
-          sha256sum $GITHUB_WORKSPACE/build/Package/portable/flameshot-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.zip
-          sha256sum $GITHUB_WORKSPACE/build/Package/portable/flameshot-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.zip > $GITHUB_WORKSPACE/build/Package/portable/flameshot-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.zip.sha256sum
+          sha256sum $GITHUB_WORKSPACE/build/Package/portable/shotup-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.zip
+          sha256sum $GITHUB_WORKSPACE/build/Package/portable/shotup-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.zip > $GITHUB_WORKSPACE/build/Package/portable/shotup-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.zip.sha256sum
 
       - name: Artifact Upload
         if:  matrix.type == 'installer'
@@ -182,8 +182,8 @@ jobs:
         with:
           name: ${{ env.PRODUCT }}-${{ env.VER_INFO }}-artifact-win-${{ matrix.config.arch }}-${{ matrix.type }}
           path: |
-            ${{ github.workspace }}/build/Package/installer/Flameshot-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.msi
-            ${{ github.workspace }}/build/Package/installer/Flameshot-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.msi.sha256sum
+            ${{ github.workspace }}/build/Package/installer/Shotup-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.msi
+            ${{ github.workspace }}/build/Package/installer/Shotup-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.msi.sha256sum
           overwrite: true
 
       - name: Artifact Upload
@@ -192,6 +192,6 @@ jobs:
         with:
           name: ${{ env.PRODUCT }}-${{ env.VER_INFO }}-artifact-win-${{ matrix.config.arch }}-${{ matrix.type }}
           path: |
-            ${{ github.workspace }}/build/Package/portable/flameshot-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.zip
-            ${{ github.workspace }}/build/Package/portable/flameshot-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.zip.sha256sum
+            ${{ github.workspace }}/build/Package/portable/shotup-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.zip
+            ${{ github.workspace }}/build/Package/portable/shotup-${{ env.VERSION }}-${{ matrix.config.pak_arch }}.zip.sha256sum
           overwrite: true

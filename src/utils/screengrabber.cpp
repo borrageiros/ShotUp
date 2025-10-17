@@ -35,7 +35,7 @@ void ScreenGrabber::generalGrimScreenshot(bool& ok, QPixmap& res)
 
     QString runDir =
       QProcessEnvironment::systemEnvironment().value("XDG_RUNTIME_DIR");
-    QString imgPath = runDir + "/flameshot.ppm";
+    QString imgPath = runDir + "/shotup.ppm";
     QProcess Process;
     QString program = "grim";
     QStringList arguments;
@@ -173,7 +173,7 @@ QPixmap ScreenGrabber::grabEntireDesktop(bool& ok)
                           "dbus protocol will be used. It should be noted that "
                           "using the dbus protocol under wayland is not "
                           "recommended. It is recommended to enable the "
-                          "useGrimAdapter setting in flameshot.ini to activate "
+                          "useGrimAdapter setting in shotup.ini to activate "
                           "the grim-based general wayland screenshot adapter");
                     }
                     freeDesktopPortal(ok, res);

@@ -1,26 +1,26 @@
-target_sources(flameshot PRIVATE
-    flameshot.h
-    flameshotdaemon.h
+target_sources(shotup PRIVATE
+    shotup.h
+    shotupdaemon.h
     qguiappcurrentscreen.h
 )
 
-target_sources(flameshot PRIVATE
+target_sources(shotup PRIVATE
     capturerequest.cpp
-    flameshot.cpp
-    flameshotdaemon.cpp
+    shotup.cpp
+    shotupdaemon.cpp
     qguiappcurrentscreen.cpp
 )
 
 if (UNIX AND NOT APPLE)
-target_sources(flameshot PRIVATE
-    flameshotdbusadapter.h
-    flameshotdbusadapter.cpp
+target_sources(shotup PRIVATE
+    shotupdbusadapter.h
+    shotupdbusadapter.cpp
 )
 endif ()
 
 if (USE_KDSINGLEAPPLICATION)
 if (NOT WIN32)
-target_sources(flameshot PRIVATE
+target_sources(shotup PRIVATE
     signaldaemon.h
     signaldaemon.cpp
 )
@@ -28,5 +28,5 @@ endif ()
 endif ()
 
 if (WIN32)
-    target_sources(flameshot PRIVATE globalshortcutfilter.h globalshortcutfilter.cpp)
+    target_sources(shotup PRIVATE globalshortcutfilter.h globalshortcutfilter.cpp)
 endif ()

@@ -1,8 +1,8 @@
-app-id: org.flameshot.Flameshot
+app-id: org.shotup.Shotup
 runtime: org.kde.Platform
 runtime-version: '6.9'
 sdk: org.kde.Sdk
-command: flameshot
+command: shotup
 finish-args:
   # X11 + XShm access
   - --share=ipc
@@ -21,7 +21,7 @@ finish-args:
   # System Tray Icon
   - --talk-name=org.kde.StatusNotifierWatcher
 modules:
-  - name: flameshot
+  - name: shotup
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release 
@@ -38,7 +38,7 @@ modules:
         dest: external/KDSingleApplication
 
       - type: git
-        url: https://github.com/flameshot-org/flameshot.git
+        url: https://github.com/shotup-org/shotup.git
         branch: master
         #tag: v13.0.0
 

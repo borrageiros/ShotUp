@@ -2,10 +2,10 @@
 DataCount=1
 
 [Data_1]
-Comment=Shortcuts for taking screenshots with Flameshot
+Comment=Shortcuts for taking screenshots with Shotup
 DataCount=5
 Enabled=true
-Name=Flameshot
+Name=Shotup
 SystemGroup=0
 Type=ACTION_DATA_GROUP
 
@@ -14,7 +14,7 @@ Comment=
 ConditionsCount=0
 
 [Data_1_1]
-Comment=Start the Flameshot screenshot tool and take a screenshot
+Comment=Start the Shotup screenshot tool and take a screenshot
 Enabled=true
 Name=Take screenshot
 Type=SIMPLE_ACTION_DATA
@@ -23,7 +23,7 @@ Type=SIMPLE_ACTION_DATA
 ActionsCount=1
 
 [Data_1_1Actions0]
-CommandURL=flameshot gui
+CommandURL=shotup gui
 Type=COMMAND_URL
 
 [Data_1_1Conditions]
@@ -40,7 +40,7 @@ Type=SHORTCUT
 Uuid={550679a7-6038-4d71-9d70-045dee9e7ad0}
 
 [Data_1_2]
-Comment=Wait for 3 seconds, then start the Flameshot screenshot tool and take a screenshot
+Comment=Wait for 3 seconds, then start the Shotup screenshot tool and take a screenshot
 Enabled=true
 Name=Take screenshot with delay
 Type=SIMPLE_ACTION_DATA
@@ -49,7 +49,7 @@ Type=SIMPLE_ACTION_DATA
 ActionsCount=1
 
 [Data_1_2Actions0]
-CommandURL=flameshot gui --delay 3000
+CommandURL=shotup gui --delay 3000
 Type=COMMAND_URL
 
 [Data_1_2Conditions]
@@ -75,7 +75,7 @@ Type=SIMPLE_ACTION_DATA
 ActionsCount=1
 
 [Data_1_3Actions0]
-CommandURL=flameshot full
+CommandURL=shotup full
 Type=COMMAND_URL
 
 [Data_1_3Conditions]
@@ -101,7 +101,7 @@ Type=SIMPLE_ACTION_DATA
 ActionsCount=1
 
 [Data_1_4Actions0]
-CommandURL=flameshot full --clipboard
+CommandURL=shotup full --clipboard
 Type=COMMAND_URL
 
 [Data_1_4Conditions]
@@ -118,16 +118,16 @@ Type=SHORTCUT
 Uuid={7a4033b1-f641-4dab-9c4e-78bf3fa0ea8c}
 
 [Data_1_5]
-Comment=Open the Flameshot Launcher
+Comment=Open the Shotup Launcher
 Enabled=false
-Name=Open Flameshot Launcher
+Name=Open Shotup Launcher
 Type=SIMPLE_ACTION_DATA
 
 [Data_1_5Actions]
 ActionsCount=1
 
 [Data_1_5Actions0]
-CommandURL=flameshot launcher
+CommandURL=shotup launcher
 Type=COMMAND_URL
 
 [Data_1_5Conditions]
@@ -145,5 +145,5 @@ Uuid={b0f9c859-bf84-42c6-8ae0-94da1a616cf1}
 
 [Main]
 AllowMerge=false
-ImportId=Flameshot
+ImportId=Shotup
 Version=2

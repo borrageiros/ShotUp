@@ -141,50 +141,50 @@
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="100"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="184"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="184"/>
         <location filename="../../src/widgets/capturelauncher.cpp" line="53"/>
         <source> seconds</source>
         <translation> giây</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="165"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="185"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="185"/>
         <source>Take new screenshot</source>
         <translation>Chụp ảnh màn hình mới</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="66"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="180"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="180"/>
         <source>Area:</source>
         <translation>Khu vực:</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="14"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="177"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="177"/>
         <source>Capture Launcher</source>
         <translation>Trình khởi chạy chụp màn hình</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="34"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="178"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="178"/>
         <source>TextLabel</source>
         <translation>Nhãn văn bản</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="51"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="179"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="179"/>
         <source>Capture Mode</source>
         <translation>Chế độ chụp</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="80"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="182"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="182"/>
         <source>Delay:</source>
         <translation>Độ trễ:</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="93"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="183"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_capturelauncher.h" line="183"/>
         <source>WxH+x+y</source>
         <translation>WxH+x+y</translation>
     </message>
@@ -259,13 +259,13 @@
     </message>
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="727"/>
-        <source>Flameshot has lost focus. Keyboard shortcuts won&apos;t work until you click somewhere.</source>
-        <translation>Flameshot đã mất tiêu điểm. Các phím tắt sẽ không hoạt động cho đến khi bạn nhấp vào đâu đó.</translation>
+        <source>Shotup has lost focus. Keyboard shortcuts won&apos;t work until you click somewhere.</source>
+        <translation>Shotup đã mất tiêu điểm. Các phím tắt sẽ không hoạt động cho đến khi bạn nhấp vào đâu đó.</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="733"/>
-        <source>Configuration error resolved. Launch `flameshot gui` again to apply it.</source>
-        <translation>Đã giải quyết lỗi cấu hình. Khởi chạy lại `flameshot gui` để áp dụng.</translation>
+        <source>Configuration error resolved. Launch `shotup gui` again to apply it.</source>
+        <translation>Đã giải quyết lỗi cấu hình. Khởi chạy lại `shotup gui` để áp dụng.</translation>
     </message>
     <message>
         <source>Select an area with the mouse, or press Esc to exit.
@@ -569,10 +569,10 @@ Press Space to open the side panel.</translation>
     <message>
         <location filename="../../src/config/configresolver.cpp" line="90"/>
         <source>Some keyboard shortcuts have conflicts.
-This will NOT prevent flameshot from starting.
+This will NOT prevent shotup from starting.
 Please solve them manually in the configuration file.</source>
         <translation>Một vài phím tắt đã xảy ra xung đột.
-Điều này KHÔNG ngăn Flameshot khởi động.
+Điều này KHÔNG ngăn Shotup khởi động.
 Vui lòng xử lí chúng thủ công trong tệp cấu hình.</translation>
     </message>
     <message>
@@ -774,42 +774,42 @@ Vui lòng xử lí chúng thủ công trong tệp cấu hình.</translation>
     </message>
 </context>
 <context>
-    <name>Flameshot</name>
+    <name>Shotup</name>
     <message>
-        <location filename="../../src/core/flameshot.cpp" line="119"/>
+        <location filename="../../src/core/shotup.cpp" line="119"/>
         <source>Error</source>
         <translation>Lỗi</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshot.cpp" line="119"/>
+        <location filename="../../src/core/shotup.cpp" line="119"/>
         <source>Unable to close active modal widgets</source>
         <translation>Không thể đóng các tiện ích dạng hộp thoại đang hoạt động</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshot.cpp" line="431"/>
+        <location filename="../../src/core/shotup.cpp" line="431"/>
         <source>URL copied to clipboard.</source>
         <translation>Đã sao chép URL vào bảng tạm.</translation>
     </message>
 </context>
 <context>
-    <name>FlameshotDaemon</name>
+    <name>ShotupDaemon</name>
     <message>
-        <location filename="../../src/core/flameshotdaemon.cpp" line="407"/>
+        <location filename="../../src/core/shotupdaemon.cpp" line="407"/>
         <source>New version %1 is available</source>
         <translation>Phiên bản %1 đã phát hành 🥳</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshotdaemon.cpp" line="413"/>
+        <location filename="../../src/core/shotupdaemon.cpp" line="413"/>
         <source>You have the latest version</source>
         <translation>Bạn đã dùng phiên bản mới nhất</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshotdaemon.cpp" line="422"/>
+        <location filename="../../src/core/shotupdaemon.cpp" line="422"/>
         <source>Failed to get information about the latest version.</source>
         <translation>Không thể lấy được thông tin về phiên bản mới.</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshotdaemon.cpp" line="445"/>
+        <location filename="../../src/core/shotupdaemon.cpp" line="445"/>
         <source>Unable to connect via DBus</source>
         <translation>Không thể kết nối thông qua DBus</translation>
     </message>
@@ -982,8 +982,8 @@ Vui lòng xử lí chúng thủ công trong tệp cấu hình.</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="426"/>
-        <source>Allow multiple flameshot GUI instances simultaneously</source>
-        <translation>Cho phép nhiều phiên bản giao diện đồ họa Flameshot chạy đồng thời</translation>
+        <source>Allow multiple shotup GUI instances simultaneously</source>
+        <translation>Cho phép nhiều phiên bản giao diện đồ họa Shotup chạy đồng thời</translation>
     </message>
     <message>
         <source>Automatically close daemon when it is not needed</source>
@@ -994,8 +994,8 @@ Vui lòng xử lí chúng thủ công trong tệp cấu hình.</translation>
         <translation type="vanished">Launch at startup</translation>
     </message>
     <message>
-        <source>Launch Flameshot</source>
-        <translation type="vanished">Launch Flameshot</translation>
+        <source>Launch Shotup</source>
+        <translation type="vanished">Launch Shotup</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="463"/>
@@ -1087,12 +1087,12 @@ Vui lòng xử lí chúng thủ công trong tệp cấu hình.</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="427"/>
-        <source>This allows you to take screenshots of Flameshot itself for example</source>
-        <translation>Cái này cho phép bạn chụp ảnh màn hình của Flameshot chẳng hạn</translation>
+        <source>This allows you to take screenshots of Shotup itself for example</source>
+        <translation>Cái này cho phép bạn chụp ảnh màn hình của Shotup chẳng hạn</translation>
     </message>
     <message>
-        <source>Launch Flameshot daemon when computer is booted</source>
-        <translation type="vanished">Launch Flameshot daemon when computer is booted</translation>
+        <source>Launch Shotup daemon when computer is booted</source>
+        <translation type="vanished">Launch Shotup daemon when computer is booted</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="466"/>
@@ -1134,8 +1134,8 @@ Vui lòng xử lí chúng thủ công trong tệp cấu hình.</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="452"/>
-        <source>Launch Flameshot daemon (background process) when computer is booted</source>
-        <translation>Khởi chạy Flameshot daemon (tác vụ nền) khi máy tính đang khởi động</translation>
+        <source>Launch Shotup daemon (background process) when computer is booted</source>
+        <translation>Khởi chạy Shotup daemon (tác vụ nền) khi máy tính đang khởi động</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="477"/>
@@ -1575,49 +1575,49 @@ Vui lòng xử lí chúng thủ công trong tệp cấu hình.</translation>
     <name>InfoWindow</name>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="14"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="116"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="116"/>
         <source>About</source>
         <translation>Về chúng tôi</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="26"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="117"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="117"/>
         <source>Icon</source>
         <translation>Biểu tượng</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="43"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="118"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="118"/>
         <source>License</source>
         <translation>Giấy phép</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="56"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="119"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="119"/>
         <source>GPLv3+</source>
         <translation>GPLv3+</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="89"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="120"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="120"/>
         <source>Version</source>
         <translation>Phiên bản</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="102"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="121"/>
-        <source>Flameshot v</source>
-        <translation>Flameshot v</translation>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="121"/>
+        <source>Shotup v</source>
+        <translation>Shotup v</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="115"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="122"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="122"/>
         <source>OS Info</source>
         <translation>Thông tin OS</translation>
     </message>
     <message>
         <location filename="../../src/widgets/infowindow.ui" line="128"/>
-        <location filename="../../build/src/flameshot_autogen/include/ui_infowindow.h" line="123"/>
+        <location filename="../../build/src/shotup_autogen/include/ui_infowindow.h" line="123"/>
         <source>Copy Info</source>
         <translation>Sao chép thông tin</translation>
     </message>
@@ -2160,8 +2160,8 @@ Bạn có thẻ cần thoát kí tự # như &apos;\#FFF&apos;</translation>
     </message>
     <message>
         <location filename="../../src/cli/commandlineparser.cpp" line="334"/>
-        <source>Per default runs Flameshot in the background and adds a tray icon for configuration.</source>
-        <translation>Mặc định, Flameshot sẽ chạy ngầm và hiển thị biểu tượng ở khay hệ thống để cấu hình.</translation>
+        <source>Per default runs Shotup in the background and adds a tray icon for configuration.</source>
+        <translation>Mặc định, Shotup sẽ chạy ngầm và hiển thị biểu tượng ở khay hệ thống để cấu hình.</translation>
     </message>
     <message>
         <location filename="../../src/widgets/trayicon.cpp" line="71"/>
@@ -2169,12 +2169,12 @@ Bạn có thẻ cần thoát kí tự # như &apos;\#FFF&apos;</translation>
         <translation>Hello, tui ở đây nè :&gt; Click vào icon trong khay để chụp màn hình hoặc chuột phải để nhìn thêm tùy chọn nhé.</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshot.cpp" line="156"/>
+        <location filename="../../src/core/shotup.cpp" line="156"/>
         <source>Requested screen exceeds screen count</source>
         <translation>Yêu cầu màn hình vượt quá số lượng hiện có</translation>
     </message>
     <message>
-        <location filename="../../src/core/flameshot.cpp" line="408"/>
+        <location filename="../../src/core/shotup.cpp" line="408"/>
         <source>Full screen screenshot pinned to screen</source>
         <translation>Ảnh chụp toàn màn hình đã ghim vào màn hình</translation>
     </message>
@@ -2312,8 +2312,8 @@ Bạn có thẻ cần thoát kí tự # như &apos;\#FFF&apos;</translation>
     </message>
     <message>
         <location filename="../../src/utils/screengrabber.cpp" line="171"/>
-        <source>If the useGrimAdapter setting is not enabled, the dbus protocol will be used. It should be noted that using the dbus protocol under wayland is not recommended. It is recommended to enable the useGrimAdapter setting in flameshot.ini to activate the grim-based general wayland screenshot adapter</source>
-        <translation>Nếu tùy chọn useGrimAdapter chưa được bật, giao thức dbus sẽ được sử dụng. Tuy nhiên, việc dùng dbus trên Wayland không được khuyến nghị. Bạn nên bật useGrimAdapter trong tập tin flameshot.ini để kích hoạt bộ điều hợp chụp màn hình Wayland dựa trên Grim</translation>
+        <source>If the useGrimAdapter setting is not enabled, the dbus protocol will be used. It should be noted that using the dbus protocol under wayland is not recommended. It is recommended to enable the useGrimAdapter setting in shotup.ini to activate the grim-based general wayland screenshot adapter</source>
+        <translation>Nếu tùy chọn useGrimAdapter chưa được bật, giao thức dbus sẽ được sử dụng. Tuy nhiên, việc dùng dbus trên Wayland không được khuyến nghị. Bạn nên bật useGrimAdapter trong tập tin shotup.ini để kích hoạt bộ điều hợp chụp màn hình Wayland dựa trên Grim</translation>
     </message>
     <message>
         <location filename="../../src/utils/screengrabber.cpp" line="182"/>
@@ -2407,8 +2407,8 @@ Bạn có thẻ cần thoát kí tự # như &apos;\#FFF&apos;</translation>
     <message>
         <location filename="../../src/config/setshortcutwidget.cpp" line="48"/>
         <location filename="../../src/config/setshortcutwidget.cpp" line="53"/>
-        <source>Flameshot must be restarted for changes to take effect.</source>
-        <translation>Cần khởi động lại Flameshot để những thay đổi có hiệu lực.</translation>
+        <source>Shotup must be restarted for changes to take effect.</source>
+        <translation>Cần khởi động lại Shotup để những thay đổi có hiệu lực.</translation>
     </message>
 </context>
 <context>
@@ -2736,8 +2736,8 @@ Bạn có thẻ cần thoát kí tự # như &apos;\#FFF&apos;</translation>
     <name>SystemNotification</name>
     <message>
         <location filename="../../src/utils/systemnotification.cpp" line="42"/>
-        <source>Flameshot Info</source>
-        <translation>Thông tin Flameshot</translation>
+        <source>Shotup Info</source>
+        <translation>Thông tin Shotup</translation>
     </message>
 </context>
 <context>
@@ -2893,8 +2893,8 @@ Bạn có thẻ cần thoát kí tự # như &apos;\#FFF&apos;</translation>
     <name>UpdateNotificationWidget</name>
     <message>
         <location filename="../../src/widgets/updatenotificationwidget.cpp" line="70"/>
-        <source>New Flameshot version %1 is available</source>
-        <translation>Phiên bản %1 của Flameshot đã phát hành 🥳</translation>
+        <source>New Shotup version %1 is available</source>
+        <translation>Phiên bản %1 của Shotup đã phát hành 🥳</translation>
     </message>
     <message>
         <location filename="../../src/widgets/updatenotificationwidget.cpp" line="123"/>

@@ -1,22 +1,22 @@
 cmake_minimum_required(VERSION 3.13)
 # cmake_policy(SET CMP0076 OLD)
 
-set(FLAMESHOT_VERSION 13.1.0)
+set(SHOTUP_VERSION 13.1.0)
 
-# Flameshot-org
-set(GIT_API_URL "https://api.github.com/repos/flameshot-org/flameshot/releases/latest")
+# Shotup-org
+set(GIT_API_URL "https://api.github.com/repos/shotup-org/shotup/releases/latest")
 
 project(
-        flameshot
-        VERSION ${FLAMESHOT_VERSION}
+        shotup
+        VERSION ${SHOTUP_VERSION}
         LANGUAGES CXX)
-set(PROJECT_NAME_CAPITALIZED "Flameshot")
+set(PROJECT_NAME_CAPITALIZED "Shotup")
 
 include(FetchContent)
 #Must be set before fetching external content!
 #QT_DEFAULT_MAJOR_VERSION used by QHotkey
 set(QT_DEFAULT_MAJOR_VERSION 6 CACHE STRING "")
-#QT_VERSION_MAJOR used by Flameshot and QtColorWidgets
+#QT_VERSION_MAJOR used by Shotup and QtColorWidgets
 set(QT_VERSION_MAJOR 6 CACHE STRING "")
 #BUILD_SHARED_LIBS used by QHotkey and QtColorWidgets
 option(BUILD_SHARED_LIBS OFF)
@@ -57,11 +57,11 @@ set(DEFAULT_RUN_IN_PLACE FALSE)
 if(WIN32)
   set(DEFAULT_RUN_IN_PLACE TRUE)
   # For Windows RC file.
-  add_definitions(-DFLAMESHOT_VERSION_MAJOR=${CMAKE_PROJECT_VERSION_MAJOR})
-  add_definitions(-DFLAMESHOT_VERSION_MINOR=${CMAKE_PROJECT_VERSION_MINOR})
-  add_definitions(-DFLAMESHOT_VERSION_BUGFIX=${CMAKE_PROJECT_VERSION_PATCH})
-  add_definitions(-DFLAMESHOT_VERSION_BUILD=1)
-  add_definitions(-DFLAMESHOT_VERSION_STRING="${PROJECT_VERSION}")
+  add_definitions(-DSHOTUP_VERSION_MAJOR=${CMAKE_PROJECT_VERSION_MAJOR})
+  add_definitions(-DSHOTUP_VERSION_MINOR=${CMAKE_PROJECT_VERSION_MINOR})
+  add_definitions(-DSHOTUP_VERSION_BUGFIX=${CMAKE_PROJECT_VERSION_PATCH})
+  add_definitions(-DSHOTUP_VERSION_BUILD=1)
+  add_definitions(-DSHOTUP_VERSION_STRING="${PROJECT_VERSION}")
 elseif(APPLE)
   set(Qt6_DIR "$(brew --prefix qt6)/lib/cmake/Qt6/" CACHE PATH "directory where Qt6Config.cmake exists.")
 endif()
@@ -70,7 +70,7 @@ set(RUN_IN_PLACE
         CACHE BOOL "Run directly in source directory structure")
 
 
-option(FLAMESHOT_DEBUG_CAPTURE "Enable mode to make debugging easier" OFF)
+option(SHOTUP_DEBUG_CAPTURE "Enable mode to make debugging easier" OFF)
 option(USE_MONOCHROME_ICON "Build using monochrome icon as default" OFF)
 option(GENERATE_TS "Regenerate translation source files" OFF)
 option(USE_KDSINGLEAPPLICATION "Use KDSingleApplication library" ON)
@@ -135,7 +135,7 @@ option(BUILD_STATIC_LIBS ON)
 if (APPLE)
   FetchContent_Declare(
       qHotKey
-      GIT_REPOSITORY https://github.com/flameshot-org/QHotkey
+      GIT_REPOSITORY https://github.com/shotup-org/QHotkey
       GIT_TAG master
   )
   FetchContent_MakeAvailable(QHotKey)
@@ -144,12 +144,12 @@ endif()
 add_subdirectory(src)
 
 # CPack
-set(CPACK_PACKAGE_VENDOR "flameshot-org")
+set(CPACK_PACKAGE_VENDOR "shotup-org")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Powerful yet simple to use screenshot software.")
 set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
-set(CPACK_PACKAGE_HOMEPAGE_URL "https://flameshot.org")
-set(CPACK_PACKAGE_CONTACT "flameshot-org developers <info@flameshot.org>")
-set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}/data/img/app/org.flameshot.Flameshot.svg") # TODO: Can any generator make
+set(CPACK_PACKAGE_HOMEPAGE_URL "https://shotup.org")
+set(CPACK_PACKAGE_CONTACT "shotup-org developers <info@shotup.org>")
+set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}/data/img/app/org.shotup.Shotup.svg") # TODO: Can any generator make
 # use of this?
 set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md") # TODO: Where is this used? Do we need a better
 # source?
@@ -176,7 +176,7 @@ if(WIN32)
 
     # WIX (Windows .msi installer)
     # 48x48 pixels
-    set(CPACK_WIX_PRODUCT_ICON "${CMAKE_SOURCE_DIR}/data/img/app/flameshot.ico")
+    set(CPACK_WIX_PRODUCT_ICON "${CMAKE_SOURCE_DIR}/data/img/app/shotup.ico")
     # Supported languages can be found at http://wixtoolset.org/documentation/manual/v3/wixui/wixui_localization.html
     # set(CPACK_WIX_CULTURES "ar-SA,bg-BG,ca-ES,hr-HR,cs-CZ,da-DK,nl-NL,en-US,et-EE,fi-FI,fr-FR,de-DE")
     set(CPACK_WIX_UI_BANNER "${CMAKE_SOURCE_DIR}/packaging/win-installer/Bitmaps/CPACK_WIX_UI_BANNER.BMP")

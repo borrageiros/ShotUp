@@ -14,13 +14,13 @@ on:
   workflow_dispatch:
 
 env:
-  PRODUCT: flameshot
+  PRODUCT: shotup
   RELEASE: 1
-  # dockerfiles, see https://github.com/flameshot-org/flameshot-dockerfiles
-  # docker images, see https://quay.io/repository/flameshot-org/ci-building
-  DOCKER_REPO: quay.io/flameshot-org/ci-building
-  # building tool: https://github.com/flameshot-org/packpack
-  PACKPACK_REPO: flameshot-org/packpack
+  # dockerfiles, see https://github.com/shotup-org/shotup-dockerfiles
+  # docker images, see https://quay.io/repository/shotup-org/ci-building
+  DOCKER_REPO: quay.io/shotup-org/ci-building
+  # building tool: https://github.com/shotup-org/packpack
+  PACKPACK_REPO: shotup-org/packpack
 
 jobs:
   deb-pack:
@@ -88,20 +88,20 @@ jobs:
         with:
           ref: ${{ github.sha }}
 
-      - name: Set env & Print flameshot version
+      - name: Set env & Print shotup version
         shell: bash
         run: |
           last_committed_tag=$(git tag -l --sort=-v:refname | head -1)
           git_revno=$(git rev-list $(git describe --tags --abbrev=0)..HEAD --count)
           git_hash=$(git rev-parse --short HEAD)
           ver_info=${last_committed_tag}+git${git_revno}.${git_hash}
-          echo "=======FLAMESHOT VERSION========"
+          echo "=======SHOTUP VERSION========"
           echo ${last_committed_tag:1}
           echo "Details: ${ver_info}"
           echo "================================"
           # This will allow to build pre-preleases without git tag
           # echo "VERSION=${last_committed_tag:1}" >> $GITHUB_ENV
-          echo "VERSION=$(cat CMakeLists.txt |grep 'set.*(.*FLAMESHOT_VERSION' | sed 's/[^0-9.]*//' |sed 's/)//g')" >> $GITHUB_ENV
+          echo "VERSION=$(cat CMakeLists.txt |grep 'set.*(.*SHOTUP_VERSION' | sed 's/[^0-9.]*//' |sed 's/)//g')" >> $GITHUB_ENV
           echo "VER_INFO=${ver_info}" >> $GITHUB_ENV
           echo "GIT_HASH=${git_hash}" >> $GITHUB_ENV
 

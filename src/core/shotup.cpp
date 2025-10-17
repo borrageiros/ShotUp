@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: 2017-2019 Alejandro Sirgo Rica & Contributors
 
-#include "flameshot.h"
-#include "flameshotdaemon.h"
+#include "shotup.h"
+#include "shotupdaemon.h"
 #if defined(Q_OS_MACOS)
 #include "qhotkey.h"
 #endif
@@ -40,7 +40,7 @@
 #include <QScreen>
 #endif
 
-Flameshot::Flameshot()
+Shotup::Shotup()
   : m_haveExternalWidget(false)
   , m_captureWindow(nullptr)
 #if defined(Q_OS_MACOS)
@@ -76,13 +76,13 @@ Flameshot::Flameshot()
 #endif
 }
 
-Flameshot* Flameshot::instance()
+Shotup* Shotup::instance()
 {
-    static Flameshot c;
+    static Shotup c;
     return &c;
 }
 
-CaptureWidget* Flameshot::gui(const CaptureRequest& req)
+CaptureWidget* Shotup::gui(const CaptureRequest& req)
 {
     if (!resolveAnyConfigErrors()) {
         return nullptr;
@@ -91,7 +91,7 @@ CaptureWidget* Flameshot::gui(const CaptureRequest& req)
 #if defined(Q_OS_MACOS)
     // This is required on MacOS because of Mission Control. If you'll switch to
     // another Desktop you cannot take a new screenshot from the tray, you have
-    // to switch back to the Flameshot Desktop manually. It is not obvious and a
+    // to switch back to the Shotup Desktop manually. It is not obvious and a
     // large number of users are confused and report a bug.
     if (m_captureWindow != nullptr) {
         m_captureWindow->close();
@@ -140,7 +140,7 @@ CaptureWidget* Flameshot::gui(const CaptureRequest& req)
     }
 }
 
-void Flameshot::screen(CaptureRequest req, const int screenNumber)
+void Shotup::screen(CaptureRequest req, const int screenNumber)
 {
     if (!resolveAnyConfigErrors()) {
         return;
@@ -182,7 +182,7 @@ void Flameshot::screen(CaptureRequest req, const int screenNumber)
     }
 }
 
-void Flameshot::full(const CaptureRequest& req)
+void Shotup::full(const CaptureRequest& req)
 {
     if (!resolveAnyConfigErrors()) {
         return;
@@ -195,14 +195,14 @@ void Flameshot::full(const CaptureRequest& req)
         p = p.copy(region);
     }
     if (ok) {
-        QRect selection; // `flameshot full` does not support --selection
+        QRect selection; // `shotup full` does not support --selection
         exportCapture(p, selection, req);
     } else {
         emit captureFailed();
     }
 }
 
-void Flameshot::launcher()
+void Shotup::launcher()
 {
     if (!resolveAnyConfigErrors()) {
         return;
@@ -218,7 +218,7 @@ void Flameshot::launcher()
 #endif
 }
 
-void Flameshot::config()
+void Shotup::config()
 {
     if (!resolveAnyConfigErrors()) {
         return;
@@ -240,7 +240,7 @@ void Flameshot::config()
     }
 }
 
-void Flameshot::info()
+void Shotup::info()
 {
     if (m_infoWindow == nullptr) {
         m_infoWindow = new InfoWindow();
@@ -252,7 +252,7 @@ void Flameshot::info()
 }
 
 #ifdef ENABLE_IMGUR
-void Flameshot::history()
+void Shotup::history()
 {
     static UploadHistory* historyWidget = nullptr;
     if (historyWidget == nullptr) {
@@ -278,7 +278,7 @@ void Flameshot::history()
 }
 #endif
 
-void Flameshot::openSavePath()
+void Shotup::openSavePath()
 {
     QString savePath = ConfigHandler().savePath();
     if (!savePath.isEmpty()) {
@@ -286,18 +286,18 @@ void Flameshot::openSavePath()
     }
 }
 
-QVersionNumber Flameshot::getVersion()
+QVersionNumber Shotup::getVersion()
 {
     return QVersionNumber::fromString(
       QStringLiteral(APP_VERSION).replace("v", ""));
 }
 
-void Flameshot::setOrigin(Origin origin)
+void Shotup::setOrigin(Origin origin)
 {
     m_origin = origin;
 }
 
-Flameshot::Origin Flameshot::origin()
+Shotup::Origin Shotup::origin()
 {
     return m_origin;
 }
@@ -306,7 +306,7 @@ Flameshot::Origin Flameshot::origin()
  * @brief Prompt the user to resolve config errors if necessary.
  * @return Whether errors were resolved.
  */
-bool Flameshot::resolveAnyConfigErrors()
+bool Shotup::resolveAnyConfigErrors()
 {
     bool resolved = true;
     ConfigHandler confighandler;
@@ -335,7 +335,7 @@ bool Flameshot::resolveAnyConfigErrors()
     return resolved;
 }
 
-void Flameshot::requestCapture(const CaptureRequest& request)
+void Shotup::requestCapture(const CaptureRequest& request)
 {
     if (!resolveAnyConfigErrors()) {
         return;
@@ -364,7 +364,7 @@ void Flameshot::requestCapture(const CaptureRequest& request)
     }
 }
 
-void Flameshot::exportCapture(const QPixmap& capture,
+void Shotup::exportCapture(const QPixmap& capture,
                               QRect& selection,
                               const CaptureRequest& req)
 {
@@ -398,11 +398,11 @@ void Flameshot::exportCapture(const QPixmap& capture,
     }
 
     if (tasks & CR::COPY) {
-        FlameshotDaemon::copyToClipboard(capture);
+        ShotupDaemon::copyToClipboard(capture);
     }
 
     if (tasks & CR::PIN) {
-        FlameshotDaemon::createPin(capture, selection);
+        ShotupDaemon::createPin(capture, selection);
         if (mode == CR::SCREEN_MODE || mode == CR::FULLSCREEN_MODE) {
             AbstractLogger::info()
               << QObject::tr("Full screen screenshot pinned to screen");
@@ -427,7 +427,7 @@ void Flameshot::exportCapture(const QPixmap& capture,
           widget, &ImgUploaderBase::uploadOk, [=, this](const QUrl& url) {
               if (ConfigHandler().copyURLAfterUpload()) {
                   if (!(tasks & CR::COPY)) {
-                      FlameshotDaemon::copyToClipboard(
+                      ShotupDaemon::copyToClipboard(
                         url.toString(), tr("URL copied to clipboard."));
                   }
                   widget->showPostUploadDialog();
@@ -441,14 +441,14 @@ void Flameshot::exportCapture(const QPixmap& capture,
     }
 }
 
-void Flameshot::setExternalWidget(bool b)
+void Shotup::setExternalWidget(bool b)
 {
     m_haveExternalWidget = b;
 }
-bool Flameshot::haveExternalWidget()
+bool Shotup::haveExternalWidget()
 {
     return m_haveExternalWidget;
 }
 
 // STATIC ATTRIBUTES
-Flameshot::Origin Flameshot::m_origin = Flameshot::DAEMON;
+Shotup::Origin Shotup::m_origin = Shotup::DAEMON;

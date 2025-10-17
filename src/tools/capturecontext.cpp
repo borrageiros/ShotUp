@@ -3,7 +3,7 @@
 
 #include "capturecontext.h"
 #include "capturerequest.h"
-#include "flameshot.h"
+#include "shotup.h"
 
 // TODO rename
 QPixmap CaptureContext::selectedScreenshotArea() const

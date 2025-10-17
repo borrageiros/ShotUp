@@ -4,8 +4,8 @@
 #include "capturetoolobjects.h"
 #include <QUndoCommand>
 
-#ifndef FLAMESHOT_MODIFICATIONCOMMAND_H
-#define FLAMESHOT_MODIFICATIONCOMMAND_H
+#ifndef SHOTUP_MODIFICATIONCOMMAND_H
+#define SHOTUP_MODIFICATIONCOMMAND_H
 
 class CaptureWidget;
 
@@ -25,4 +25,4 @@ private:
     CaptureWidget* m_captureWidget;
 };
 
-#endif // FLAMESHOT_MODIFICATIONCOMMAND_H
+#endif // SHOTUP_MODIFICATIONCOMMAND_H

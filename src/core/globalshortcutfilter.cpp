@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: 2017-2019 Alejandro Sirgo Rica & Contributors
 
 #include "globalshortcutfilter.h"
-#include "src/core/flameshot.h"
+#include "src/core/shotup.h"
 #include <qt_windows.h>
 
 GlobalShortcutFilter::GlobalShortcutFilter(QObject* parent)
@@ -34,12 +34,12 @@ bool GlobalShortcutFilter::nativeEventFilter(const QByteArray& eventType,
 #ifdef ENABLE_IMGUR
         // Show screenshots history
         if (VK_SNAPSHOT == keycode && MOD_SHIFT == modifiers) {
-            Flameshot::instance()->history();
+            Shotup::instance()->history();
         }
 #endif
         // Capture screen
         if (VK_SNAPSHOT == keycode && 0 == modifiers) {
-            Flameshot::instance()->requestCapture(
+            Shotup::instance()->requestCapture(
               CaptureRequest(CaptureRequest::GRAPHICAL_MODE));
         }
 

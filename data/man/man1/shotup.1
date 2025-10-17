@@ -2,7 +2,7 @@
 .\" (C) Copyright 2018 Boyuan Yang <073plan@gmail.com>,
 .\" This file is released under CC0 1.0 Universal (CC0-1.0) license.
 .\"
-.TH "FLAMESHOT" "1" "2021-11-11"
+.TH "SHOTUP" "1" "2021-11-11"
 .\" Please adjust this date whenever revising the manpage.
 .\"
 .\" Some roff macros, for reference:
@@ -16,50 +16,50 @@
 .\" .sp <n>    insert n+1 empty lines
 .\" for manpage-specific macros, see man(7)
 .SH NAME
-Flameshot \- Powerful yet simple-to-use screenshot software
+Shotup \- Powerful yet simple-to-use screenshot software
 .SH SYNOPSIS
-.B flameshot
+.B shotup
 [subcommands] [arguments]
 .br
-.B flameshot gui
+.B shotup gui
 [gui arguments]
 .br
-.B flameshot screen
+.B shotup screen
 [screen arguments]
 .br
-.B flameshot full
+.B shotup full
 [fullscreen arguments]
 .br
-.B flameshot config
+.B shotup config
 [config arguments]
 .br
-.B flameshot launcher
+.B shotup launcher
 .br
 .
 .\"----------------------------------------------------------------------------
 .SH DESCRIPTION
 This manual page documents briefly the
-.B flameshot
+.B shotup
 command as provided by
-.B flameshot
+.B shotup
 package.
 .PP
-\fBflameshot\fP is a screenshot tool that aims to be powerful yet simple-to-use.
+\fBshotup\fP is a screenshot tool that aims to be powerful yet simple-to-use.
 Its notable features include customizable appearance, in-app screenshot editing,
 D-Bus interface, tray icon support, experimental GNOME/KDE Wayland support,
 integration with Imgur and support for both GUI and CLI interface.
 .PP
-Besides the usage information about \fBflameshot\fR in this manpage, you can find similar information using \fBflameshot --help\fR. Same \fB--help\fR can be used for each subcommand as well to get the valid arguments for them. The detailed usage of \fBflameshot\fP is documented in the \fIREADME.md\fR file on the project's Git repository page:
-https://github.com/flameshot-org/flameshot
+Besides the usage information about \fBshotup\fR in this manpage, you can find similar information using \fBshotup --help\fR. Same \fB--help\fR can be used for each subcommand as well to get the valid arguments for them. The detailed usage of \fBshotup\fP is documented in the \fIREADME.md\fR file on the project's Git repository page:
+https://github.com/shotup-org/shotup
 .
 .\"----------------------------------------------------------------------------
 .SH "SUBCOMMANDS"
 .PP
-Per default without subcommands, \fBflameshot\fR runs the Flameshot in the background and adds a tray icon for configuration. Note that it will not take a screenshot unless you define one of the modes though the subcommands. There are various subcommands that can be used to use flameshot in different modes:
+Per default without subcommands, \fBshotup\fR runs the Shotup in the background and adds a tray icon for configuration. Note that it will not take a screenshot unless you define one of the modes though the subcommands. There are various subcommands that can be used to use shotup in different modes:
 .
 .TP
 .B gui
-Running Flameshot in \fBgui\fR mode would let the user to select the region from which the screenshot should be taken and then allow them to annotate the screenshot.
+Running Shotup in \fBgui\fR mode would let the user to select the region from which the screenshot should be taken and then allow them to annotate the screenshot.
 .
 .TP
 .B full
@@ -80,7 +80,7 @@ If no argument is provided, it will open the config window, otherwise it can cha
 .\"----------------------------------------------------------------------------
 .SH "ARGUMENTS"
 .PP
-Here we list all the arguments available for all subcommands. The subcommands that accept each argument are listed after each argument. Alternatively, you can use the \fBflameshot [subcommand] --help\fR to know the list of available arguments for each subcommand.
+Here we list all the arguments available for all subcommands. The subcommands that accept each argument are listed after each argument. Alternatively, you can use the \fBshotup [subcommand] --help\fR to know the list of available arguments for each subcommand.
 .
 .PP
 \-s, \-\-accept-on-select
@@ -125,7 +125,7 @@ Valid for subcommands: config
 .PP
 \-d, \-\-delay <milliseconds>
 .RS 4
-How many milliseconds should Flameshot wait before taking the screenshot
+How many milliseconds should Shotup wait before taking the screenshot
 .br
 Valid for subcommands: full, gui, screen
 .RE
@@ -245,51 +245,51 @@ Valid for subcommands: full, gui, screen
 .\"----------------------------------------------------------------------------
 .SH "EXAMPLE USAGE"
 .PP
-This section lists some of the most common usage of \fBflameshot\fR via
+This section lists some of the most common usage of \fBshotup\fR via
 command line.
 .
 .TP
-.B flameshot
-Start flameshot and have it running in background. If enabled,
+.B shotup
+Start shotup and have it running in background. If enabled,
 an icon will appear in the tray area of current desktop environment.
 .
 .TP
-.B flameshot gui
+.B shotup gui
 Capture with GUI.
 .
 .TP
-\fBflameshot gui\fR \-p /path/to/captures
+\fBshotup gui\fR \-p /path/to/captures
 Capture with GUI and custom save path.
 .
 .TP
-\fBflameshot gui\fR \-d 2000
+\fBshotup gui\fR \-d 2000
 Open GUI with a delay of 2 seconds.
 .
 .TP
-.B flameshot launcher
+.B shotup launcher
 Open a launcher dialog for advanced screenshot, such as custom
 time delay, etc.
 .
 .TP
-.B flameshot full \-\-help
-Shows help for \fBflameshot full\fR subcommand.
+.B shotup full \-\-help
+Shows help for \fBshotup full\fR subcommand.
 .
 .TP
-\fBflameshot full\fR -p /path/to/captures -d 5000
+\fBshotup full\fR -p /path/to/captures -d 5000
 Fullscreen capture with custom save path (no GUI) and time delay.
 .
 .TP
-\fBflameshot full\fR -c -p /path/to/captures
+\fBshotup full\fR -c -p /path/to/captures
 Fullscreen capture with custom savepath copying to clipboard.
 .
 .TP
-\fBflameshot screen\fR \-\-number <screen number>
+\fBshotup screen\fR \-\-number <screen number>
 Define the screen to capture. Will capture the screen containing the
 cursor by default.
 .
 .TP
-\fBflameshot screen\fR \-\-help
-Shows help for \fBflameshot screen\fR subcommand.
+\fBshotup screen\fR \-\-help
+Shows help for \fBshotup screen\fR subcommand.
 .
 .\"----------------------------------------------------------------------------
 .SH RETURN VALUE
@@ -303,15 +303,15 @@ You may also find more detailed online documentation on upstream project homepag
 .HP
 Upstream project homepage:
 .br
-• \m[blue]\fBhttps://flameshot.org\fR\m[]
+• \m[blue]\fBhttps://shotup.org\fR\m[]
 .br
-• \m[blue]\fBhttps://github.com/flameshot-org/flameshot\fR\m[]
+• \m[blue]\fBhttps://github.com/shotup-org/shotup\fR\m[]
 .
 .\"----------------------------------------------------------------------------
 .SH "AUTHOR"
 .PP
 .ad l
-.B Flameshot
+.B Shotup
 was initially written by
 .MT izhe@\:hotmail.es
 lupoDharkael
@@ -330,7 +330,7 @@ Martin Eckleben
 .br
 The following URL gives you a more complete list of contributors:
 .RS
-\m[blue]\fBhttps://github.com/flameshot-org/flameshot/graphs/contributors\fR\m[]\&.
+\m[blue]\fBhttps://github.com/shotup-org/shotup/graphs/contributors\fR\m[]\&.
 .RE
 .
 .\"----------------------------------------------------------------------------
@@ -339,7 +339,7 @@ The following URL gives you a more complete list of contributors:
 .PP
 • The main code is licensed under GPLv3
 .br
-• The logo of Flameshot is licensed under Free Art License v1.3
+• The logo of Shotup is licensed under Free Art License v1.3
 .br
 • The button icons are licensed under Apache License 2.0. See: \m[blue]\fBhttps://github.com/google/material-design-icons\fR\m[]
 .br

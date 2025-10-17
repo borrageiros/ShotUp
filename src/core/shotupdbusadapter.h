@@ -5,14 +5,14 @@
 
 #include <QtDBus/QDBusAbstractAdaptor>
 
-class FlameshotDBusAdapter : public QDBusAbstractAdaptor
+class ShotupDBusAdapter : public QDBusAbstractAdaptor
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.flameshot.Flameshot")
+    Q_CLASSINFO("D-Bus Interface", "org.shotup.Shotup")
 
 public:
-    explicit FlameshotDBusAdapter(QObject* parent = nullptr);
-    virtual ~FlameshotDBusAdapter();
+    explicit ShotupDBusAdapter(QObject* parent = nullptr);
+    virtual ~ShotupDBusAdapter();
 
 public slots:
     Q_NOREPLY void attachScreenshotToClipboard(const QByteArray& data);

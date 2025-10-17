@@ -1,5 +1,5 @@
 #include "signaldaemon.h"
-#include "flameshot.h"
+#include "shotup.h"
 #include <QApplication>
 #include <QSocketNotifier>
 #include <csignal>
