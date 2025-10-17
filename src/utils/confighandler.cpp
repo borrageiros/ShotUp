@@ -108,8 +108,8 @@ static QMap<class QString, QSharedPointer<ValueHandler>>
     OPTION("undoLimit"                   ,BoundedInt         ( 0, 999, 100   )),
     // Interface tab
     OPTION("uiLanguage"                  ,String             ( "auto"        )),
-    OPTION("uiColor"                     ,Color              ( {116, 0, 150} )),
-    OPTION("contrastUiColor"             ,Color              ( {39, 0, 50}   )),
+    OPTION("uiColor"                     ,Color              ( {136, 231, 136} )),
+    OPTION("contrastUiColor"             ,Color              ( {34, 102, 34}   )),
     OPTION("contrastOpacity"             ,BoundedInt         ( 0, 255, 190   )),
     OPTION("buttons"                     ,ButtonList         ( {}            )),
     // Filename Editor tab
@@ -122,7 +122,7 @@ static QMap<class QString, QSharedPointer<ValueHandler>>
     OPTION("drawPixelateSize"            ,LowerBoundedInt    ( 1, 2          )),
     OPTION("drawRectangleSize"           ,LowerBoundedInt    ( 1, 1          )),
     OPTION("drawMarkerSize"              ,LowerBoundedInt    ( 1, 5          )),
-    OPTION("drawColor"                   ,Color              ( Qt::red       )),
+    OPTION("drawColor"                   ,Color              ( {136, 231, 136} )),
     OPTION("userColors"                  ,UserColors         ( 3, 17         )),
     OPTION("ignoreUpdateToVersion"       ,String             ( ""            )),
     OPTION("keepOpenAppLauncher"         ,Bool               ( false         )),
